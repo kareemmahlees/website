@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "SugarpunchDemo";
+    src: url("../../public/fonts/SugarpunchDEMO.otf");
+  }
+}
+
+body,
+html {
+  background-color: black;
+  height: 100%;
+  width: 100%;
+}
