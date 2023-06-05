@@ -49,12 +49,12 @@ const Hero: FC<HeroProps> = ({}) => {
             <MenuList className="text-black">
               <MenuItem
                 className="uppercase hover:bg-slate-200 rounded-md"
-                onClick={() =>
+                onClick={() => {
                   download(
-                    process.env.CV_PDF_FORMAT_DOWNLOAD_URL,
-                    process.env.CV_PDF_FILENAME
-                  )
-                }
+                    process.env.NEXT_PUBLIC_CV_PDF_FORMAT_DOWNLOAD_URL,
+                    process.env.NEXT_PUBLIC_CV_PDF_FILENAME
+                  );
+                }}
               >
                 pdf{" "}
                 <span className="text-sm opacity-50 lowercase ml-3">
@@ -65,8 +65,8 @@ const Hero: FC<HeroProps> = ({}) => {
                 className="uppercase hover:bg-slate-200 rounded-md"
                 onClick={() =>
                   download(
-                    process.env.CV_DOCX_FORMAT_DOWNLOAD_URL,
-                    process.env.CV_DOCX_FILENAME
+                    process.env.NEXT_PUBLIC_CV_DOCX_FORMAT_DOWNLOAD_URL,
+                    process.env.NEXT_PUBLIC_CV_DOCX_FILENAME
                   )
                 }
               >
@@ -103,7 +103,7 @@ const Hero: FC<HeroProps> = ({}) => {
         className="hidden lg:block"
       />
 
-      <Meteor className="absolute top-0 right-2/3 -rotate-45" delay={0.5} />
+      {/* <Meteor className="absolute top-0 right-2/3 -rotate-45" delay={0.5} /> */}
     </header>
   );
 };
