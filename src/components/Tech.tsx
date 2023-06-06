@@ -37,7 +37,6 @@ const backendTech: { name: string; src: string }[] = [
     src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/mongodb-colored.svg",
   },
   { name: "Redis", src: "https://img.icons8.com/color/96/redis.png" },
-  ,
   {
     name: "FastAPI",
     src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/fastapi-colored.svg",
