@@ -2,6 +2,8 @@
 import { FC, useState, useRef, useEffect } from "react";
 import { RoughNotation } from "react-rough-notation";
 import { useInView } from "react-intersection-observer";
+import { Sparkle } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface AboutProps {}
 const About: FC<AboutProps> = ({}) => {
@@ -11,7 +13,7 @@ const About: FC<AboutProps> = ({}) => {
   return (
     <section
       id="about"
-      className="flex text-center flex-col items-center mt-24 text-white space-y-7 md:mx-auto mx-5 "
+      className="flex text-center flex-col items-center mt-36 text-white space-y-7 md:mx-auto mx-5 relative"
     >
       <div className="flex text-center flex-col items-center space-y-9 lg:-mt-40">
         <h2
@@ -46,6 +48,42 @@ const About: FC<AboutProps> = ({}) => {
           </RoughNotation>
         </p>
       </div>
+      <motion.div
+        animate={{
+          scale: [1, 0.5, 1],
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 2,
+        }}
+        className="absolute left-0 -top-20 md:left-28 lg:left-72 lg:-top-60"
+      >
+        <Sparkle fill="white" size={45} />
+      </motion.div>
+      <motion.div
+        animate={{
+          scale: [1, 0.5, 1],
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 2,
+        }}
+        className="absolute left-10 -top-9 md:left-36 lg:left-96 lg:-top-44"
+      >
+        <Sparkle fill="white" />
+      </motion.div>
+      <motion.div
+        animate={{
+          scale: [1, 0.5, 1],
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 2,
+        }}
+        className="absolute right-96 -top-64 hidden lg:block"
+      >
+        <Sparkle fill="white" size={55} />
+      </motion.div>
     </section>
   );
 };
