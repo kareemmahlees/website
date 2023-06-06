@@ -3,33 +3,31 @@ import Image from "next/image";
 import { FC } from "react";
 import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import useDownloader from "react-use-downloader";
-import Meteor from "./Meteor";
+import Link from "next/link";
 
 interface HeroProps {}
 
 const Hero: FC<HeroProps> = ({}) => {
-  // const cvPdfFormat =
-  //   "https://docs.google.com/document/u/0/export?format=pdf&id=1js7jkFavUT6LgHqmUikKH0Fucz5Akjcbi0yNuR3XAno";
-  // const cvDocxFormat =
-  //   "https://docs.google.com/document/u/0/export?format=docx&id=1js7jkFavUT6LgHqmUikKH0Fucz5Akjcbi0yNuR3XAno";
-  // const filenamePDF = "Kareem Ebrahim CV.pdf";
-  // const filenameDocx = "Kareem Ebrahim CV.docx";
   const { download } = useDownloader();
   return (
-    <header className="relative h-2/3 text-white mt-10 lg:flex lg:items-start lg:justify-between lg:gap-7">
+    <header
+      id="home"
+      // className="overflow-hidden relative h-2/3 text-white mt-28 lg:mt-52 lg:flex lg:items-start lg:justify-between lg:gap-7"
+      className="overflow-hidden relative h-2/3 lg:h-screen text-white mt-28 lg:flex lg:items-center lg:-mt-4 lg:justify-between lg:gap-7"
+    >
       <Image
         className="hidden lg:block"
         alt="img"
-        src={"/img1.svg"}
+        src={"/saturn_mobile.svg"}
         width={350}
         height={220}
       />
       <Image
-        className="absolute left-40 bottom-28 hidden lg:block"
+        className="absolute left-40 bottom- hidden lg:block"
         alt="img"
-        src={"/img4.svg"}
-        width={150}
-        height={150}
+        src={"/random_vector.svg"}
+        width={120}
+        height={120}
       />
       <div className="flex items-center flex-col">
         <div className="font-[SugarpunchDemo] space-y-5 flex flex-col items-center ">
@@ -43,7 +41,7 @@ const Hero: FC<HeroProps> = ({}) => {
           </p>
 
           <Menu>
-            <MenuButton className="bg-white text-black font-semibold px-5 py-3 rounded-lg">
+            <MenuButton className="bg-white text-black  px-5 py-3 rounded-lg">
               Download CV
             </MenuButton>
             <MenuList className="text-black">
@@ -78,19 +76,25 @@ const Hero: FC<HeroProps> = ({}) => {
             </MenuList>
           </Menu>
         </div>
+        <div className="flex flex-col items-center mt-10 group hover:cursor-pointer lg:mb-6">
+          <a href={"#about"}>
+            <Image alt="mouse" src={"/mouse.svg"} width={40} height={40} />
+            <Image
+              className="group-hover:translate-y-5 transition"
+              alt="down arrow"
+              src={"/down_arrow.svg"}
+              width={40}
+              height={40}
+            />
+          </a>
+        </div>
       </div>
       <div className="mt-20 flex flex-col -space-y-36 md:flex-row md:justify-between lg:hidden">
-        <Image
-          className=""
-          alt="img"
-          src={"/img1.svg"}
-          width={280}
-          height={150}
-        />
+        <Image alt="img" src={"/saturn_mobile.svg"} width={280} height={150} />
         <Image
           className="self-end"
           alt="img"
-          src={"/img3.svg"}
+          src={"/astronaut_mobile.svg"}
           width={230}
           height={310}
         />
@@ -102,8 +106,6 @@ const Hero: FC<HeroProps> = ({}) => {
         height={460}
         className="hidden lg:block"
       />
-
-      {/* <Meteor className="absolute top-0 right-2/3 -rotate-45" delay={0.5} /> */}
     </header>
   );
 };
