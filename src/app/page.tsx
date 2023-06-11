@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <div className="lg:space-y-96">
+      <div className="lg:space-y-96 mt-48">
         <About />
         <Tech />
         <Projects />

@@ -103,9 +103,9 @@ const Tech: FC<TechProps> = ({}) => {
   return (
     <section
       id="tech"
-      className="scroll-mt-48 relative text-white h-1/2 mt-80 flex items-center justify-center mx-6"
+      className="scroll-mt-48 text-white h-1/2 mt-80 flex items-center justify-center mx-10"
     >
-      <div className="flex flex-col items-center justify-center space-y-16">
+      <div className="flex flex-col items-center justify-center gap-16">
         <h2
           className="font-bold lg:text-4xl md:text-3xl text-2xl underline underline-offset-8"
           ref={techRef}
@@ -114,15 +114,14 @@ const Tech: FC<TechProps> = ({}) => {
             Tech
           </RoughNotation>
         </h2>
-        {/* <h3 className="capitalize md:text-lg lg:text-xl">
-          backend technologies
-        </h3> */}
-        <Image
-          alt="backend technologies tag"
-          src={"/backend_tech_tag.svg"}
-          width={228}
-          height={228}
-        />
+        <div className="relative w-48 h-10">
+          <Image
+            className="object-contain"
+            alt="backend technologies tag"
+            src={"/backend_tech_tag.svg"}
+            fill
+          />
+        </div>
         <RoughNotation
           type="bracket"
           show={backendIsVisible}
@@ -135,7 +134,7 @@ const Tech: FC<TechProps> = ({}) => {
           >
             {backendTech.map((skill, index) => (
               <Tooltip key={index} label={skill.name} className="">
-                <div className="w-[45px] h-[45px] relative md:w-[55px] md:h-[55px] lg:w-[60px] lg:h-[60px]">
+                <div className="w-[40px] h-[40px] relative md:w-[50px] md:h-[50px] lg:w-[55px] lg:h-[55px]">
                   <Image
                     className="hover:scale-125 transition "
                     alt={skill.name}
@@ -148,15 +147,14 @@ const Tech: FC<TechProps> = ({}) => {
             ))}
           </div>
         </RoughNotation>
-        {/* <h3 className="capitalize md:text-lg lg:text-xl">
-          frontend technologies
-        </h3> */}
-        <Image
-          alt="frontend tech tag"
-          src={"/frontend_tech_tag.svg"}
-          width={228}
-          height={228}
-        />
+        <div className="relative w-48 h-10">
+          <Image
+            className="object-contain"
+            alt="frontend technologies tag"
+            src={"/frontend_tech_tag.svg"}
+            fill
+          />
+        </div>
         <RoughNotation
           type="bracket"
           show={frontendIsVisible}
@@ -169,7 +167,7 @@ const Tech: FC<TechProps> = ({}) => {
           >
             {frontendTech.map((skill, index) => (
               <Tooltip key={index} label={skill.name} className="">
-                <div className="w-[45px] h-[45px] relative md:w-[55px] md:h-[55px] lg:w-[60px] lg:h-[60px]">
+                <div className="w-[40px] h-[40px] relative md:w-[50px] md:h-[50px] lg:w-[55px] lg:h-[55px]">
                   <Image
                     className="hover:scale-125 transition "
                     alt={skill.name}

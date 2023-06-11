@@ -3,6 +3,10 @@ const nextConfig = {
   images: {
     domains: ["img.icons8.com"],
   },
+  experimental: {
+    mdxRs: true,
+  },
 };
 
-module.exports = nextConfig;
+const withMDX = require("@next/mdx")();
+module.exports = withMDX(nextConfig);

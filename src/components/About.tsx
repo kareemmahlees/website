@@ -14,7 +14,7 @@ const About: FC<AboutProps> = ({}) => {
   return (
     <section
       id="about"
-      className="scroll-my-[550px] flex text-center flex-col items-center text-white space-y-7 md:mx-auto mx-5 relative"
+      className="scroll-my-[500px] flex text-center flex-col items-center text-white space-y-7 md:mx-auto mx-5 relative"
     >
       <div className="flex text-center flex-col items-center space-y-9 lg:-mt-40">
         <h2
@@ -43,8 +43,12 @@ const About: FC<AboutProps> = ({}) => {
             color="yellow"
             padding={7}
           >
-            <a id="a1" href="mailto:kareemmahlees@gmail.com">
-              Hire me?
+            <a
+              id="a1"
+              href="mailto:kareemmahlees@gmail.com"
+              className="break-words"
+            >
+              Hire&nbsp;me?
             </a>
           </RoughNotation>
         </p>

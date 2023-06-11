@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { RoughNotation } from "react-rough-notation";
 import { Tooltip } from "@chakra-ui/react";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 interface ProjectsProps {}
 
@@ -23,7 +24,7 @@ const Projects: FC<ProjectsProps> = ({}) => {
         </h2>
         <ProjectCard
           imgSrc="/project_test_img.svg"
-          projectName="Cachzilla"
+          projectName="cachezilla"
           techIcons={[
             {
               src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/python-colored.svg",
@@ -91,9 +92,17 @@ interface ProjectCardProps {
   }[];
 }
 
-const ProjectCard: FC<ProjectCardProps> = ({ children, imgSrc, techIcons }) => {
+const ProjectCard: FC<ProjectCardProps> = ({
+  children,
+  imgSrc,
+  techIcons,
+  projectName,
+}) => {
   return (
-    <article className="relative flex flex-col items-center w-[400px] bg-[#1f1435] rounded-lg">
+    <article
+      id="projects"
+      className="scroll-my-40 lg:scroll-my-60 mx-7 relative flex flex-col items-center bg-[#1f1435] rounded-lg"
+    >
       <Image
         alt="project img"
         src={imgSrc}
@@ -117,9 +126,12 @@ const ProjectCard: FC<ProjectCardProps> = ({ children, imgSrc, techIcons }) => {
           ))}
         </div>
         <div className="flex items-center w-full justify-center group hover:cursor-pointer">
-          <p className="font-semibold underline underline-offset-4">
+          <Link
+            href={`/projects/${projectName}`}
+            className="font-semibold underline underline-offset-4"
+          >
             read more
-          </p>
+          </Link>
           <ArrowRight className="group-hover:translate-x-3 transition-all group-hover:opacity-100 opacity-0" />
         </div>
       </div>

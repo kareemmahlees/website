@@ -1,26 +1,20 @@
 "use client";
-import Image from "next/image";
 import { FC, useRef } from "react";
 import { IconButton, useDisclosure } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
   Drawer,
   DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
 } from "@chakra-ui/react";
-import Link from "next/link";
 
 interface NavProps {}
 
 const Nav: FC<NavProps> = ({}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef(null);
-
-  const scrolToTop = () => {};
 
   return (
     <nav className="fixed top-0 bg-black z-50 w-full text-white px-6 py-4 md:px-9 md:py-6 lg:px-12 lg:py-7 flex items-center justify-between ">
@@ -43,7 +37,9 @@ const Nav: FC<NavProps> = ({}) => {
         <a href="#tech" className="hover:border-b-2 hover:border-white">
           Tech
         </a>
-        <li>Projects</li>
+        <a href="#projects" className="hover:border-b-2 hover:border-white">
+          Projects
+        </a>
         <li>Contact</li>
       </ul>
       <IconButton
@@ -87,7 +83,13 @@ const Nav: FC<NavProps> = ({}) => {
               >
                 Tech
               </a>
-              <li className="w-full py-4 text-center">Contact</li>
+              <a
+                href="#projects"
+                className="w-full py-4 text-center"
+                onClick={onClose}
+              >
+                Projects
+              </a>
             </ul>
           </DrawerBody>
         </DrawerContent>
