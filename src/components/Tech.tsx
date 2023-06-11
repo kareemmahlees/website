@@ -4,7 +4,6 @@ import { useInView } from "react-intersection-observer";
 import { Tooltip } from "@chakra-ui/react";
 import { RoughNotation } from "react-rough-notation";
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 const backendTech: { name: string; src: string }[] = [
   {
@@ -102,32 +101,10 @@ const Tech: FC<TechProps> = ({}) => {
   const { ref: backendRef, inView: backendIsVisible } = useInView();
   const { ref: frontendRef, inView: frontendIsVisible } = useInView();
   return (
-    <section className="relative text-white h-1/2 mt-80 flex items-center justify-center mx-6">
-      {/* <motion.div
-        className="absolute -top-10 left-24"
-        initial={{
-          x: 0,
-          y: 0,
-        }}
-        animate={{
-          x: -200,
-          y: 200,
-          scale: [0, 1, 1, 0],
-        }}
-        transition={{
-          repeat: Infinity,
-          duration: 1,
-          repeatDelay: 3,
-        }}
-      >
-        <Image
-          alt="comet"
-          className="fill-white"
-          src={"https://img.icons8.com/ios-filled/50/FFFFFF/comet.png"}
-          width={20}
-          height={20}
-        />
-      </motion.div> */}
+    <section
+      id="tech"
+      className="scroll-mt-48 relative text-white h-1/2 mt-80 flex items-center justify-center mx-6"
+    >
       <div className="flex flex-col items-center justify-center space-y-16">
         <h2
           className="font-bold lg:text-4xl md:text-3xl text-2xl underline underline-offset-8"
@@ -137,9 +114,15 @@ const Tech: FC<TechProps> = ({}) => {
             Tech
           </RoughNotation>
         </h2>
-        <h3 className="capitalize md:text-lg lg:text-xl">
+        {/* <h3 className="capitalize md:text-lg lg:text-xl">
           backend technologies
-        </h3>
+        </h3> */}
+        <Image
+          alt="backend technologies tag"
+          src={"/backend_tech_tag.svg"}
+          width={228}
+          height={228}
+        />
         <RoughNotation
           type="bracket"
           show={backendIsVisible}
@@ -152,7 +135,7 @@ const Tech: FC<TechProps> = ({}) => {
           >
             {backendTech.map((skill, index) => (
               <Tooltip key={index} label={skill.name} className="">
-                <div className="w-[50px] h-[50px] relative md:w-[55px] md:h-[55px] lg:w-[60px] lg:h-[60px]">
+                <div className="w-[45px] h-[45px] relative md:w-[55px] md:h-[55px] lg:w-[60px] lg:h-[60px]">
                   <Image
                     className="hover:scale-125 transition "
                     alt={skill.name}
@@ -165,9 +148,15 @@ const Tech: FC<TechProps> = ({}) => {
             ))}
           </div>
         </RoughNotation>
-        <h3 className="capitalize md:text-lg lg:text-xl">
+        {/* <h3 className="capitalize md:text-lg lg:text-xl">
           frontend technologies
-        </h3>
+        </h3> */}
+        <Image
+          alt="frontend tech tag"
+          src={"/frontend_tech_tag.svg"}
+          width={228}
+          height={228}
+        />
         <RoughNotation
           type="bracket"
           show={frontendIsVisible}
@@ -180,7 +169,7 @@ const Tech: FC<TechProps> = ({}) => {
           >
             {frontendTech.map((skill, index) => (
               <Tooltip key={index} label={skill.name} className="">
-                <div className="w-[50px] h-[50px] relative md:w-[55px] md:h-[55px] lg:w-[60px] lg:h-[60px]">
+                <div className="w-[45px] h-[45px] relative md:w-[55px] md:h-[55px] lg:w-[60px] lg:h-[60px]">
                   <Image
                     className="hover:scale-125 transition "
                     alt={skill.name}

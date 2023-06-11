@@ -13,7 +13,7 @@ const Hero: FC<HeroProps> = ({}) => {
     <header
       id="home"
       // className="overflow-hidden relative h-2/3 text-white mt-28 lg:mt-52 lg:flex lg:items-start lg:justify-between lg:gap-7"
-      className="overflow-hidden relative h-2/3 lg:h-screen text-white mt-28 lg:flex lg:items-center lg:-mt-4 lg:justify-between lg:gap-7"
+      className="overflow-hidden relative h-2/3 lg:h-screen text-white mt-28 lg:flex lg:items-start lg:mt-56 lg:justify-between lg:gap-7"
     >
       <Image
         className="hidden lg:block"
@@ -22,13 +22,13 @@ const Hero: FC<HeroProps> = ({}) => {
         width={350}
         height={220}
       />
-      <Image
+      {/* <Image
         className="absolute left-40 bottom- hidden lg:block"
         alt="img"
         src={"/random_vector.svg"}
         width={120}
         height={120}
-      />
+      /> */}
       <div className="flex items-center flex-col">
         <div className="font-[SugarpunchDemo] space-y-5 flex flex-col items-center ">
           <h3 className="text-2xl lg:text-3xl">hi , i&apos;m</h3>
@@ -75,8 +75,41 @@ const Hero: FC<HeroProps> = ({}) => {
               </MenuItem>
             </MenuList>
           </Menu>
+          <div className="flex items-center gap-5">
+            <Link href={"https://github.com/kareemmahlees"} target="_blank">
+              <Image
+                alt="github icon"
+                src={"https://img.icons8.com/glyph-neue/128/EBEBEB/github.png"}
+                width={35}
+                height={35}
+              />
+            </Link>
+            <Link
+              href={"https://www.linkedin.com/in/kareem-ebrahim"}
+              target="_blank"
+            >
+              <Image
+                alt="linkedin icon"
+                src={
+                  "https://img.icons8.com/ios-filled/100/EBEBEB/linkedin.png"
+                }
+                width={35}
+                height={35}
+              />
+            </Link>
+            <Link href={"https://medium.com/@kareemmahlees"} target="_blank">
+              <Image
+                alt="medium icon"
+                src={
+                  "https://img.icons8.com/ios-filled/100/EBEBEB/medium-logo.png"
+                }
+                width={35}
+                height={35}
+              />
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col items-center mt-10 group hover:cursor-pointer lg:mb-6">
+        <div className="md:hidden flex flex-col items-center mt-10 group hover:cursor-pointer lg:mb-6">
           <a href={"#about"}>
             <Image alt="mouse" src={"/mouse.svg"} width={40} height={40} />
             <Image

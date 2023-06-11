@@ -40,7 +40,9 @@ const Nav: FC<NavProps> = ({}) => {
         <a href={"#about"} className="hover:border-b-2 hover:border-white">
           About
         </a>
-        <li>Tech</li>
+        <a href="#tech" className="hover:border-b-2 hover:border-white">
+          Tech
+        </a>
         <li>Projects</li>
         <li>Contact</li>
       </ul>
@@ -78,7 +80,13 @@ const Nav: FC<NavProps> = ({}) => {
               >
                 About
               </a>
-              <li className="w-full py-4 text-center">Projects</li>
+              <a
+                href="#tech"
+                className="w-full py-4 text-center"
+                onClick={onClose}
+              >
+                Tech
+              </a>
               <li className="w-full py-4 text-center">Contact</li>
             </ul>
           </DrawerBody>

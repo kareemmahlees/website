@@ -1,11 +1,12 @@
 "use client";
-import { FC, useState, useRef, useEffect } from "react";
+import { FC, HTMLAttributes } from "react";
 import { RoughNotation } from "react-rough-notation";
 import { useInView } from "react-intersection-observer";
 import { Sparkle } from "lucide-react";
 import { motion } from "framer-motion";
 
-interface AboutProps {}
+interface AboutProps extends HTMLAttributes<HTMLDivElement> {}
+
 const About: FC<AboutProps> = ({}) => {
   const { ref: hireMeRef, inView: hireMeIsVisible } = useInView();
   const { ref: aboutRef, inView: aboutIsVisible } = useInView();
@@ -13,7 +14,7 @@ const About: FC<AboutProps> = ({}) => {
   return (
     <section
       id="about"
-      className="flex text-center flex-col items-center mt-36 text-white space-y-7 md:mx-auto mx-5 relative"
+      className="scroll-my-[550px] flex text-center flex-col items-center text-white space-y-7 md:mx-auto mx-5 relative"
     >
       <div className="flex text-center flex-col items-center space-y-9 lg:-mt-40">
         <h2
