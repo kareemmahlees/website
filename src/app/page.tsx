@@ -1,12 +1,11 @@
 "use client";
 import About from "@/components/About";
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import Tech from "@/components/Tech";
-import { useRef } from "react";
 
 export default function Home() {
-  const aboutRef = useRef(null);
   return (
     <main>
       <Hero />
@@ -14,6 +13,7 @@ export default function Home() {
         <About />
         <Tech />
         <Projects />
+        <Footer />
       </div>
     </main>
   );

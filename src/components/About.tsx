@@ -35,7 +35,7 @@ const About: FC<AboutProps> = ({}) => {
             deliver performant backend services.
           </p>
         </div>
-        <p className="font-semibold text-lg" ref={hireMeRef}>
+        <p className="font-semibold text-lg hidden" ref={hireMeRef}>
           I&apos;m currently looking for a new role,{" "}
           <RoughNotation
             type="circle"

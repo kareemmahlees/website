@@ -1,9 +1,9 @@
 "use client";
+import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import Image from "next/image";
-import { FC } from "react";
-import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
-import useDownloader from "react-use-downloader";
 import Link from "next/link";
+import { FC } from "react";
+import useDownloader from "react-use-downloader";
 
 interface HeroProps {}
 
@@ -12,7 +12,6 @@ const Hero: FC<HeroProps> = ({}) => {
   return (
     <header
       id="home"
-      // className="overflow-hidden relative h-2/3 text-white mt-28 lg:mt-52 lg:flex lg:items-start lg:justify-between lg:gap-7"
       className="overflow-hidden relative h-2/3 lg:h-screen text-white mt-28 lg:flex lg:items-start lg:mt-56 lg:justify-between lg:gap-7"
     >
       <Image

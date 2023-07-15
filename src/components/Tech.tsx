@@ -50,6 +50,10 @@ const backendTech: { name: string; src: string }[] = [
   },
   { name: "Docker", src: "https://img.icons8.com/fluency/48/docker.png" },
   {
+    name: "Kubernetes",
+    src: "https://img.icons8.com/color/144/kubernetes.png",
+  },
+  {
     name: "AWS",
     src: "/aws.svg",
   },
