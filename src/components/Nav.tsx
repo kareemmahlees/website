@@ -1,14 +1,15 @@
 "use client";
-import { FC, useRef } from "react";
-import { IconButton, useDisclosure } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
   Drawer,
   DrawerBody,
-  DrawerOverlay,
-  DrawerContent,
   DrawerCloseButton,
+  DrawerContent,
+  DrawerOverlay,
+  IconButton,
+  useDisclosure,
 } from "@chakra-ui/react";
+import { FC, useRef } from "react";
 
 interface NavProps {}
 
@@ -40,7 +41,12 @@ const Nav: FC<NavProps> = ({}) => {
         <a href="#projects" className="hover:border-b-2 hover:border-white">
           Projects
         </a>
-        <li>Contact</li>
+        <p
+          className="hover:border-b-2 hover:border-white hover:cursor-pointer"
+          onClick={() => window.scrollTo(0, document.body.scrollHeight)}
+        >
+          Contact
+        </p>
       </ul>
       <IconButton
         className="md:hidden"
@@ -90,6 +96,15 @@ const Nav: FC<NavProps> = ({}) => {
               >
                 Projects
               </a>
+              <p
+                className="w-full py-4 text-center hover:cursor-pointer"
+                onClick={() => {
+                  onClose();
+                  window.scrollTo(0, document.body.scrollHeight);
+                }}
+              >
+                Contact
+              </p>
             </ul>
           </DrawerBody>
         </DrawerContent>

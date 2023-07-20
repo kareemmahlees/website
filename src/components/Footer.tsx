@@ -6,18 +6,27 @@ interface FooterProps {}
 
 const Footer: FC<FooterProps> = ({}) => {
   return (
-    <footer className="mt-80 px-7 md:px-9 lg:px-16 pb-9">
-      <div className="space-y-8 flex flex-col items-start ">
-        <h3 className="font-[SugarpunchDemo] text-5xl md:text-6xl md:leading-[85px] text-white leading-[70px] break-normal tracking-wider">
-          Want to have an awesome
-          <br /> project done ?
-        </h3>
-        <a
-          className="bg-white text-black px-3 py-2 rounded-lg"
-          href={"mailto:kareemmahlees@gmail.com"}
-        >
-          Contact
-        </a>
+    <footer className="mt-80  pb-9">
+      <div className="flex items-center justify-between">
+        <div className="space-y-8 flex flex-col items-start px-7 md:px-9 lg:px-16">
+          <h3 className="font-[SugarpunchDemo] text-5xl md:text-6xl md:leading-[85px] text-white leading-[70px] break-normal tracking-wider">
+            Want to have an awesome
+            <br /> project done ?
+          </h3>
+          <a
+            className="bg-white text-black px-3 py-2 rounded-lg"
+            href={"mailto:kareemmahlees@gmail.com"}
+          >
+            Contact
+          </a>
+        </div>
+        <Image
+          src={"/saturn_footer.svg"}
+          width={228}
+          height={228}
+          alt="saturn"
+          className="hidden md:block"
+        />
       </div>
 
       <div className="flex flex-col items-center mt-20 space-y-7">

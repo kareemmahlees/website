@@ -1,6 +1,6 @@
-import "@/styles/globals.css";
-import { Inter, Encode_Sans, Preahvihear } from "next/font/google";
 import Nav from "@/components/Nav";
+import "@/styles/globals.css";
+import { Preahvihear } from "next/font/google";
 import Providers from "./providers";
 
 const preahvihear = Preahvihear({ subsets: ["latin"], weight: "400" });

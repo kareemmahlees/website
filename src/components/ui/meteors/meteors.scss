@@ -1,0 +1,170 @@
+$n: 8;
+$left: 90, 90, 85, 65, 90, 65, 85, 90;
+$top: "1vh", "50vh", "50vh", "50vh", "1vh", "1vh", "1vh", "1vh";
+$degree: 0, 45deg, 90deg, 135deg, 180deg, 225deg, 270deg, 315deg;
+
+.meteor {
+  position: absolute;
+  height: 1px;
+  width: 300px;
+  opacity: 0;
+  background-image: linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
+  &:before {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 5px;
+    border-radius: 50%;
+    margin-top: -2px;
+    background: rgba(#fff, 0.7);
+    box-shadow: 0 0 15px 3px #fff;
+  }
+  @for $i from 1 through $n {
+    $v: random(nth($left, $i));
+    $h: random(250) + 50;
+    $d: random(70) / 10 + 3;
+    &.meteor-#{$i} {
+      left: $v * 1%;
+      top: calc(#{nth($top, $i)} + #{$h + px});
+      transform: rotate(nth($degree, $i));
+      animation: meteor- + $i $d + s linear;
+    }
+  }
+}
+
+@keyframes meteor-1 {
+  0% {
+    opacity: 1;
+    margin-right: -300px;
+  }
+  12% {
+    opacity: 0;
+  }
+  15% {
+    margin-left: -600px;
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes meteor-2 {
+  0% {
+    opacity: 1;
+    margin-top: 300px;
+    margin-right: -300px;
+  }
+  12% {
+    opacity: 0;
+  }
+  15% {
+    margin-top: -300px;
+    margin-left: -600px;
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes meteor-3 {
+  0% {
+    opacity: 1;
+    margin-top: 300px;
+  }
+  12% {
+    opacity: 0;
+  }
+  15% {
+    margin-top: -300px;
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes meteor-4 {
+  0% {
+    opacity: 1;
+    margin-top: 300px;
+    margin-right: 300px;
+  }
+  12% {
+    opacity: 0;
+  }
+  15% {
+    margin-top: -300px;
+    margin-left: 600px;
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes meteor-5 {
+  0% {
+    opacity: 1;
+    margin-right: 300px;
+  }
+  12% {
+    opacity: 0;
+  }
+  15% {
+    margin-left: 600px;
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes meteor-6 {
+  0% {
+    opacity: 1;
+    margin-top: -300px;
+    margin-right: 300px;
+  }
+  12% {
+    opacity: 0;
+  }
+  15% {
+    margin-top: 300px;
+    margin-left: 600px;
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes meteor-7 {
+  0% {
+    opacity: 1;
+    margin-top: -300px;
+  }
+  12% {
+    opacity: 0;
+  }
+  15% {
+    margin-top: 600px;
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes meteor-8 {
+  0% {
+    opacity: 1;
+    margin-top: -300px;
+    margin-right: -300px;
+  }
+  12% {
+    opacity: 0;
+  }
+  15% {
+    margin-top: 300px;
+    margin-left: -600px;
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}

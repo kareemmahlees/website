@@ -1,12 +1,12 @@
 "use client";
+import { Tooltip } from "@chakra-ui/react";
+import { clsx } from "clsx";
+import { Inter } from "next/font/google";
 import Image from "next/image";
 import { FC } from "react";
 import { useInView } from "react-intersection-observer";
 import { RoughNotation } from "react-rough-notation";
-import { Tooltip } from "@chakra-ui/react";
-import { Inter } from "next/font/google";
 import { SocialIcon } from "./ui/Icon";
-import { clsx } from "clsx";
 
 const inter = Inter({ subsets: ["latin"], weight: "400" });
 
