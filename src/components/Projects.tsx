@@ -26,6 +26,90 @@ const Projects: FC<ProjectsProps> = ({}) => {
           </RoughNotation>
         </h2>
         <ProjectCard
+          flexDirection="reversed"
+          imgSrc="/project_test_img.svg"
+          projectName="tableX"
+          techIcons={[
+            {
+              toolTip: "Rust",
+              src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/rust-colored-dark.svg",
+            },
+            {
+              toolTip: "NextJs",
+              src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nextjs-colored-dark.svg",
+            },
+            {
+              toolTip: "TypeScript",
+              src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/typescript-colored.svg",
+            },
+            {
+              toolTip: "Tauri",
+              src: "/icons/tauri.svg",
+            },
+            {
+              toolTip: "shadcn/ui",
+              src: "/icons/shadcn.svg",
+            },
+
+            {
+              toolTip: "Git",
+              src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/git-colored.svg",
+            },
+          ]}
+          socialIcons={[
+            {
+              link: "https://github.com/kareemmahlees/tablex",
+              alt: "github project link",
+              src: "https://img.icons8.com/glyph-neue/128/EBEBEB/github.png",
+            },
+          ]}
+        >
+          A table viewer for modern developers, designed for simplicity and ease
+          of use together with a modern UI thanks to NextJs 14 and shadcn/ui,
+          ultra-small bundle size (~10 Mb) thanks to Tauri, and an outstanding
+          performance powered by a Rust backend.
+        </ProjectCard>
+        <ProjectCard
+          flexDirection="normal"
+          imgSrc="/project_test_img.svg"
+          projectName="mysql-meta"
+          techIcons={[
+            {
+              toolTip: "Golang",
+              src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/go-colored.svg",
+            },
+            {
+              toolTip: "GraphQl",
+              src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/graphql-colored.svg",
+            },
+            {
+              toolTip: "MySQL",
+              src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/mysql-colored.svg",
+            },
+            {
+              toolTip: "Docker",
+              src: "https://img.icons8.com/fluency/48/docker.png",
+            },
+            {
+              toolTip: "Git",
+              src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/git-colored.svg",
+            },
+          ]}
+          socialIcons={[
+            {
+              link: "https://github.com/kareemmahlees/mysql-meta",
+              alt: "github project link",
+              src: "https://img.icons8.com/glyph-neue/128/EBEBEB/github.png",
+            },
+          ]}
+        >
+          A RESTfull and GraphQL API to manage MySQL DBs. Most of the DB
+          interactions such as creating tables and databases, adding, deleting
+          or updating table columns and more. Following best practices to write
+          idiomatic and maintainable code, that is also will tested with 72%
+          code coverage.
+        </ProjectCard>
+        <ProjectCard
           imgSrc="/project_test_img.svg"
           projectName="cachezilla"
           flexDirection="reversed"
@@ -149,46 +233,6 @@ const Projects: FC<ProjectsProps> = ({}) => {
           A fully featured application featuring Express API, Authentication
           with JWT, Validation with Zod, Testing with Vitest, Dockerized image
           and deployed with k8s.
-        </ProjectCard>
-        <ProjectCard
-          flexDirection="normal"
-          imgSrc="/project_test_img.svg"
-          projectName="mysql-meta"
-          techIcons={[
-            {
-              toolTip: "Golang",
-              src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/go-colored.svg",
-            },
-            {
-              toolTip: "GraphQl",
-              src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/graphql-colored.svg",
-            },
-            {
-              toolTip: "MySQL",
-              src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/mysql-colored.svg",
-            },
-            {
-              toolTip: "Docker",
-              src: "https://img.icons8.com/fluency/48/docker.png",
-            },
-            {
-              toolTip: "Git",
-              src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/git-colored.svg",
-            },
-          ]}
-          socialIcons={[
-            {
-              link: "https://github.com/kareemmahlees/mysql-meta",
-              alt: "github project link",
-              src: "https://img.icons8.com/glyph-neue/128/EBEBEB/github.png",
-            },
-          ]}
-        >
-          A RESTfull and GraphQL API to manage MySQL DBs. Most of the DB
-          interactions such as creating tables and databases, adding, deleting
-          or updating table columns and more. Following best practices to write
-          idiomatic and maintainable code, that is also will tested with 72%
-          code coverage.
         </ProjectCard>
       </div>
     </section>
