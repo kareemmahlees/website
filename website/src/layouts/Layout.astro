@@ -1,0 +1,33 @@
+---
+
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Kareem Ebrahim</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @font-face {
+    font-family: "SugarpunchDemo";
+    src: url("/fonts/SugarpunchDEMO.otf");
+  }
+
+  body,
+  html {
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    color: white;
+  }
+</style>
