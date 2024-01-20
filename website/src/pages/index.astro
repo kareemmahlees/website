@@ -1,9 +1,12 @@
 ---
-import Hero from "../components/Hero.astro";
+import Nav from "@/components/Nav/Nav.astro";
+import "@/styles/globals.css";
+import Hero from "../components/Hero/Hero.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
+  <Nav />
   <main class="h-full w-full flex flex-col items-center">
     <Hero />
   </main>

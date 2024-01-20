@@ -1,0 +1,13 @@
+---
+import DrawerLinks from "./drawer-link";
+import HomeBtn from "./home-btn";
+import NavLinks from "./nav-links";
+---
+
+<nav
+  class="fixed top-0 backdrop-blur-md bg-background/50 z-[9999] w-full px-4 py-3 md:px-7 md:py-5 lg:px-10 lg:py-6 flex items-center justify-between"
+>
+  <HomeBtn client:load />
+  <NavLinks client:media="(min-width: 768px)" />
+  <DrawerLinks client:media="(max-width: 768px)" />
+</nav>
