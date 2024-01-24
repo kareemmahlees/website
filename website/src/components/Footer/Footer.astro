@@ -1,0 +1,47 @@
+---
+import saturnFooter from "@assets/saturn_footer.svg";
+import { SiGithub, SiLinkedin, SiMedium } from "@icons-pack/react-simple-icons";
+import { Image } from "astro:assets";
+import FooterContactBtn from "./footer-contact-btn";
+---
+
+<footer class="pb-9 w-full mt-80">
+  <div class="flex items-center justify-between">
+    <div class="gap-y-7 flex flex-col items-start px-7 md:px-9 lg:px-16">
+      <h3
+        class="font-[SugarpunchDemo] text-5xl md:text-6xl md:leading-[85px] text-white leading-[70px] break-normal tracking-wider"
+      >
+        Want to have an <br /> awesome project done ?
+      </h3>
+      <FooterContactBtn client:visible />
+    </div>
+    <Image
+      src={saturnFooter}
+      width={300}
+      height={300}
+      alt="saturn"
+      class="hidden md:block"
+    />
+  </div>
+
+  <div class="flex flex-col items-center mt-20 space-y-7">
+    <h4 class="font-bold text-xl">kareem.dev</h4>
+    <div class="flex items-center gap-5">
+      <a href={"https://github.com/kareemmahlees"} target="_blank">
+        <SiGithub />
+      </a>
+      <a href={"https://www.linkedin.com/in/kareem-ebrahim"} target="_blank">
+        <SiLinkedin />
+      </a>
+      <a href={"https://medium.com/@kareemmahlees"} target="_blank">
+        <SiMedium />
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Powered by{" "}
+      <a href="https://nextjs.org/" target="_blank" class="underline"> Astro</a>
+      and{" "}
+      <a href="https://vercel.com" target="_blank" class="underline"> Vercel</a>
+    </p>
+  </div>
+</footer>
