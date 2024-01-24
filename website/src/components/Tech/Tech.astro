@@ -1,0 +1,37 @@
+---
+import { Badge } from "../ui/badge";
+import BackendTech from "./backend-tech";
+import FrontendTech from "./frontend-tech";
+import OtherTech from "./other-tech";
+---
+
+<section id="tech" class="flex flex-col items-center">
+  <div class="flex flex-col items-center justify-center gap-16">
+    <h2
+      class="font-bold lg:text-4xl md:text-3xl text-2xl underline underline-offset-8"
+    >
+      Tech
+    </h2>
+
+    <div
+      class="flex flex-col items-center gap-y-10 border-2 w-full p-7 rounded-md border-b-[6px]"
+    >
+      <Badge className="text-base">Backend</Badge>
+      <BackendTech client:visible />
+    </div>
+
+    <div
+      class="flex flex-col items-center gap-y-10 border-2 w-full p-7 rounded-md border-b-[6px]"
+    >
+      <Badge className="text-base">Frontend</Badge>
+      <FrontendTech client:visible />
+    </div>
+
+    <div
+      class="flex flex-col items-center gap-y-10 border-2 w-full p-7 rounded-md border-b-[6px]"
+    >
+      <Badge className="text-base">Other</Badge>
+      <OtherTech client:visible />
+    </div>
+  </div>
+</section>
