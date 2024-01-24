@@ -1,0 +1,97 @@
+---
+import {
+  SiDocker,
+  SiGithub,
+  SiGo,
+  SiGraphql,
+  SiMysql,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPoetry,
+  SiPytest,
+  SiPython,
+  SiReactquery,
+  SiReacttable,
+  SiRedis,
+  SiRust,
+  SiShadcnui,
+  SiTauri,
+  SiTypescript,
+} from "@icons-pack/react-simple-icons";
+import ProjectCard from "./ProjectCard.astro";
+---
+
+<section class="flex items-center justify-center md:px-4">
+  <div class="space-y-36 flex flex-col items-center justify-center">
+    <h2
+      class="font-bold lg:text-4xl md:text-3xl text-2xl underline underline-offset-8 text-center"
+    >
+      Projects
+    </h2>
+    <ProjectCard
+      techIcons={[
+        SiRust,
+        SiNextdotjs,
+        SiTypescript,
+        SiTauri,
+        SiShadcnui,
+        SiReactquery,
+        SiReacttable,
+      ]}
+      socialIcons={[
+        { link: "https://github.com/kareemmahlees/tablex", Icon: SiGithub },
+      ]}
+      projectName="TableX"
+    >
+      A desktop table viewer for modern developers, designed for simplicity and
+      ease of use together with a modern UI thanks to NextJs 14 and shadcn/ui,
+      ultra-small bundle size (~10 Mb) thanks to Tauri, and an outstanding
+      performance powered by a Rust backend.
+    </ProjectCard>
+    <ProjectCard
+      reversed={true}
+      projectName="MySQL Meta"
+      techIcons={[SiGo, SiGraphql, SiMysql, SiDocker]}
+      socialIcons={[
+        { link: "https://github.com/kareemmahlees/mysql-meta", Icon: SiGithub },
+      ]}
+    >
+      A RESTfull and GraphQL API to manage MySQL DBs. Most of the DB
+      interactions such as creating tables and databases, adding, deleting or
+      updating table columns and more. Following best practices to write
+      idiomatic and maintainable code, that is also will tested with 72% code
+      coverage.
+    </ProjectCard>
+    <ProjectCard
+      projectName="Cachezilla"
+      techIcons={[SiPython, SiPoetry, SiPytest]}
+      socialIcons={[
+        { link: "https://github.com/kareemmahlees/cachezilla", Icon: SiGithub },
+      ]}
+    >
+      A lightweight caching system that supports key-value storage and ttls.
+      <br />
+      It is capable of boosting the number of request to 12 folds and reducing request
+      delay to 92%.
+      <br />
+      Built with pure Python, implementing TDD and 100% code coverage{" "}
+    </ProjectCard>
+    <ProjectCard
+      reversed={true}
+      projectName="tKick"
+      techIcons={[SiTypescript, SiNodedotjs, SiRedis, SiDocker]}
+      socialIcons={[
+        {
+          link: "https://github.com/kareemmahlees/tkick",
+          Icon: SiGithub,
+        },
+      ]}
+    >
+      A background job system built in pure nodejs and typescript that supports
+      job queuing and job scheduling with configurable number of workers.
+      <br />
+      Built with best practices and applying SOLID principles with extensive use
+      of Typescript type system
+    </ProjectCard>
+  </div>
+</section>
