@@ -11,6 +11,16 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    keyframes: {
+      shine: {
+        "0%": { transform: "scale(1)" },
+        "50%": { transform: "scale(0.5)" },
+        "100%": { transform: "scale(1)" },
+      },
+    },
+    animation: {
+      shine: "shine 2s ease-in-out infinite",
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",

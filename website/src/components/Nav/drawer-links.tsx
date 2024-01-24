@@ -5,6 +5,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { LINKS } from "@/consts";
 import { Menu } from "lucide-react";
 import { useState } from "react";
 import { Button } from "../ui/button";
@@ -21,21 +22,24 @@ const DrawerLinks = () => {
           <DrawerTitle>Where would you like to go?</DrawerTitle>
         </DrawerHeader>
         <ul className="flex flex-col gap-5">
-          <Button
-            variant={"ghost"}
-            // onClick={() => {
-            //   setIsDrawerOpen(false);
-            //   setTimeout(() => {
-            //     window.scrollTo({ top: 0 });
-            //   }, 500);
-            // }}
-          >
-            Home
-          </Button>
-          <Button variant={"ghost"}>About</Button>
-          <Button variant={"ghost"}>Tech</Button>
-          <Button variant={"ghost"}>Projects</Button>
-          <Button variant={"ghost"}>Contact</Button>
+          {LINKS.map(({ title, id }, idx) => {
+            return (
+              <Button
+                key={idx}
+                variant={"ghost"}
+                onClick={() => {
+                  setIsDrawerOpen(false);
+                  setTimeout(() => {
+                    document
+                      .getElementById(id)
+                      ?.scrollIntoView({ block: "center" });
+                  }, 500);
+                }}
+              >
+                {title}
+              </Button>
+            );
+          })}
         </ul>
       </DrawerContent>
     </Drawer>

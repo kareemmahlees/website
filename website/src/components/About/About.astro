@@ -1,0 +1,45 @@
+---
+import Sparkle from "./sparkle";
+---
+
+<section
+  id="about"
+  class="flex text-center flex-col items-center space-y-7 relative snap-center"
+>
+  <div class="flex text-center flex-col items-center space-y-9 lg:-mt-40">
+    <h2
+      class="font-bold lg:text-4xl md:text-3xl text-2xl underline underline-offset-8"
+    >
+      About
+    </h2>
+    <div class="text-center lg:w-2/3 md:w-3/4 text-xl tracking-wide space-y-4">
+      <p>
+        A passionate, hard-working, efficient developer well knowledgeable of
+        cutting-edge, industry-standard technologies.
+      </p>
+      <p>
+        Able to work in cross-functional teams, large scale applications and
+        deliver performant backend services.
+      </p>
+    </div>
+    <p class="font-semibold text-lg">
+      I&apos;m currently looking for a new role,{" "}
+      <a href="mailto:kareemmahlees@gmail.com" class="break-words underline">
+        Hire me?
+      </a>
+    </p>
+
+    <Sparkle
+      className="absolute left-0 -top-11 md:left-28 lg:left-72 lg:-top-60 animate-shine"
+      client:visible
+    />
+    <Sparkle
+      className="absolute left-10 -top-4 md:left-36 lg:left-96 lg:-top-44 animate-shine w-3 h-3 md:w-5 md:h-5 lg:w-7 lg:h-7"
+      client:visible
+    />
+    <Sparkle
+      className="absolute right-96 -top-64 hidden lg:block animate-shine"
+      client:visible
+    />
+  </div>
+</section>

@@ -1,5 +1,7 @@
 ---
+import About from "@/components/About/About.astro";
 import Nav from "@/components/Nav/Nav.astro";
+import MaxWidthWrapper from "@/layouts/MaxWidthWrapper.astro";
 import "@/styles/globals.css";
 import Hero from "../components/Hero/Hero.astro";
 import Layout from "../layouts/Layout.astro";
@@ -9,5 +11,8 @@ import Layout from "../layouts/Layout.astro";
   <Nav />
   <main class="h-full w-full flex flex-col items-center">
     <Hero />
+    <MaxWidthWrapper>
+      <About />
+    </MaxWidthWrapper>
   </main>
 </Layout>
