@@ -25,8 +25,8 @@ import Sparkle from "./sparkle";
     </div>
     <p class="font-semibold text-lg">
       I&apos;m currently looking for a new role,{" "}
-      <SendEmailDialog client:load>
-        <span> Hire me?</span>
+      <SendEmailDialog client:visible>
+        <span id="link"> Hire me?</span>
       </SendEmailDialog>
     </p>
 
@@ -44,3 +44,13 @@ import Sparkle from "./sparkle";
     />
   </div>
 </section>
+
+<!-- this is done because we can't pass a tag with the property "class"
+  as a child to react componenet
+ -->
+<style>
+  #link {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+</style>
