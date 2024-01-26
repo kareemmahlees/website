@@ -1,0 +1,21 @@
+---
+import { Badge } from "../ui/badge";
+
+interface Props {
+  title: string;
+  content: string;
+  tags: string[];
+  slug: string;
+}
+
+const { title, content, tags, slug } = Astro.props;
+---
+
+<a
+  class="text-start space-y-2 bg-zinc-800 p-3 rounded-lg hover:shadow-sm hover:shadow-white transition-all duration-75"
+  href={`/blog/${slug}`}
+>
+  <h4 class="font-semibold text-xl">{title}</h4>
+  <div class="space-x-2">{tags.map((tag) => <Badge>{tag}</Badge>)}</div>
+  <p class="line-clamp-3 text-muted-foreground">{content}</p>
+</a>

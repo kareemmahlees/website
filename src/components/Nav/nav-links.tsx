@@ -1,9 +1,12 @@
 import { LINKS } from "@/consts";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 
 const NavLinks = () => {
   return (
-    <ul className="items-center gap-x-10 md:flex hidden">
+    <ul className="hidden items-center gap-x-10 md:flex">
+      <a className={buttonVariants({ variant: "ghost" })} href="/blog">
+        Blog
+      </a>
       {LINKS.map(({ title, id }, idx) => {
         return (
           <Button

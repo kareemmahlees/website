@@ -8,7 +8,7 @@ import {
 import { LINKS } from "@/consts";
 import { Menu } from "lucide-react";
 import { useState } from "react";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 
 const DrawerLinks = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -22,6 +22,9 @@ const DrawerLinks = () => {
           <DrawerTitle>Where would you like to go?</DrawerTitle>
         </DrawerHeader>
         <ul className="flex flex-col gap-5">
+          <a className={buttonVariants({ variant: "ghost" })} href="/blog">
+            Blog
+          </a>
           {LINKS.map(({ title, id }, idx) => {
             return (
               <Button

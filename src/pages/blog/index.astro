@@ -1,0 +1,33 @@
+---
+import BlogCard from "@/components/Blog/BlogCard.astro";
+import Layout from "@/layouts/Layout.astro";
+import MaxWidthWrapper from "@/layouts/MaxWidthWrapper.astro";
+import "@/styles/globals.css";
+import { getCollection } from "astro:content";
+
+const allArticles = await getCollection("blog");
+---
+
+<Layout title="Kareem Ebrahim's Blog">
+  <main
+    class="h-full w-full flex flex-col items-center bg-[url(../assets/grain.svg)]"
+  >
+    <MaxWidthWrapper class="mt-7 space-y-10">
+      <h1 class="font-bold text-4xl text-start md:text-center">
+        Welcome to my blog
+      </h1>
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {
+          allArticles.map((article) => (
+            <BlogCard
+              slug={article.slug}
+              title={article.data.title}
+              content={article.body}
+              tags={article.data.tags}
+            />
+          ))
+        }
+      </section>
+    </MaxWidthWrapper>
+  </main>
+</Layout>

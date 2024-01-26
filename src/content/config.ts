@@ -7,6 +7,7 @@ const blogCollection = defineCollection({
     pubDate: z.date(),
     github_url: z.string().url().optional(),
     challenge_url: z.string().url().optional(),
+    challenge_name: z.string().optional(),
     tags: z.array(z.string()),
   }),
 });
