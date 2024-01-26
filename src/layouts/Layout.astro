@@ -1,4 +1,9 @@
 ---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
 import { Toaster } from "sonner";
 ---
 
@@ -10,7 +15,7 @@ import { Toaster } from "sonner";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Kareem Ebrahim</title>
+    <title>{title}</title>
   </head>
   <body>
     <Toaster richColors closeButton client:load />

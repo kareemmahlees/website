@@ -13,6 +13,21 @@ html {
   width: 100%;
 }
 
+code {
+  counter-reset: line;
+}
+
+code > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+
+  width: 1rem;
+  display: inline-block;
+  margin-right: 1.5rem;
+  text-align: right;
+  color: gray;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -62,7 +77,7 @@ html {
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border data-[highlighted-chars]:rounded-md data-[highlighted-chars]:border-b-2 data-[highlighted-line]:border-l-2 data-[highlighted-line]:border-zinc-400 data-[highlighted-chars]:border-b-violet-300 data-[highlighted-chars]:bg-violet-700 data-[highlighted-line]:bg-muted-foreground/20 data-[highlighted-chars]:p-1;
   }
   body {
     @apply bg-background text-foreground;

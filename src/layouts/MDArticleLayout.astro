@@ -1,0 +1,48 @@
+---
+import { Separator } from "@/components/ui/separator";
+import { SiGithub } from "@icons-pack/react-simple-icons";
+import type { CollectionEntry } from "astro:content";
+import { Code2 } from "lucide-react";
+
+interface Props {
+  frontmatter: CollectionEntry<"blog">["data"];
+}
+const { frontmatter } = Astro.props;
+---
+
+<main class="relative p-4 pt-10 space-y-10 bg-[url(../assets/grain.svg)] p">
+  <div class="prose lg:prose-lg prose-invert mx-auto">
+    <h1 class="font-bold text-5xl">{frontmatter.title}</h1>
+    <section class="flex flex-col items-start space-y-7">
+      <div class="text-muted-foreground space-y-3">
+        <p>
+          {frontmatter.pubDate.toISOString().slice(0, 10)}
+        </p>
+        {
+          frontmatter.github_url && (
+            <p class="flex items-center gap-x-2">
+              <SiGithub className="w-4 h-4" />
+              Github:{" "}
+              <a class="underline cursor-pointer">{frontmatter.github_url}</a>
+            </p>
+          )
+        }
+        {
+          frontmatter.challenge_url && (
+            <p class="flex items-center gap-x-2">
+              <Code2 className="w-4 h-4" />
+              Challenge:{" "}
+              <a class="underline cursor-pointer">
+                {frontmatter.challenge_url}
+              </a>
+            </p>
+          )
+        }
+      </div>
+      <Separator />
+    </section>
+    <article class="mt-5">
+      <slot />
+    </article>
+  </div>
+</main>

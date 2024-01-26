@@ -1,4 +1,4 @@
-import SendEmailDialog from "../send-email";
+import SendEmailDialog from "../send-email-dialog";
 import { Button } from "../ui/button";
 
 const FooterContactBtn = () => {
