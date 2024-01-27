@@ -4,7 +4,11 @@ import { Button, buttonVariants } from "../ui/button";
 const NavLinks = () => {
   return (
     <ul className="hidden items-center gap-x-10 md:flex">
-      <a className={buttonVariants({ variant: "ghost" })} href="/blog">
+      <a
+        className={buttonVariants({ variant: "ghost" })}
+        href="/blog"
+        data-astro-prefetch
+      >
         Blog
       </a>
       {LINKS.map(({ title, id }, idx) => {

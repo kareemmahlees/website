@@ -22,7 +22,11 @@ const DrawerLinks = () => {
           <DrawerTitle>Where would you like to go?</DrawerTitle>
         </DrawerHeader>
         <ul className="flex flex-col gap-5">
-          <a className={buttonVariants({ variant: "ghost" })} href="/blog">
+          <a
+            className={buttonVariants({ variant: "ghost" })}
+            href="/blog"
+            data-astro-prefetch
+          >
             Blog
           </a>
           {LINKS.map(({ title, id }, idx) => {

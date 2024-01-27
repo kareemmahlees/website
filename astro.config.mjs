@@ -13,6 +13,7 @@ const options = {
 
 // https://astro.build/config
 export default defineConfig({
+  prefetch: true,
   integrations: [
     tailwind({
       applyBaseStyles: false,

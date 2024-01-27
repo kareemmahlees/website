@@ -1,8 +1,9 @@
 ---
+import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import type { CollectionEntry } from "astro:content";
-import { Code2 } from "lucide-react";
+import { Code2, Link } from "lucide-react";
 
 interface Props {
   frontmatter: CollectionEntry<"blog">["data"];
@@ -11,19 +12,27 @@ const { frontmatter } = Astro.props;
 ---
 
 <main class="relative p-4 pt-10 bg-[url(../assets/grain.svg)]">
-  <div class="prose lg:prose-lg prose-invert mx-auto">
+  <div class="prose lg:prose-lg prose-invert mx-auto prose-code:max-h-[400px]">
     <h1 class="font-bold text-5xl">{frontmatter.title}</h1>
     <section class="flex flex-col items-start space-y-7 -mt-4">
       <div class="text-muted-foreground space-y-3">
         <p>
           {frontmatter.pubDate.toISOString().slice(0, 10)}
         </p>
+        <div class="space-x-3">
+          {frontmatter.tags.map((tag) => <Badge>{tag}</Badge>)}
+        </div>
         {
           frontmatter.github_url && (
             <p class="flex items-center gap-x-2">
               <SiGithub className="w-4 h-4" />
               Github:{" "}
-              <a class="underline cursor-pointer">{frontmatter.github_url}</a>
+              <a
+                class="underline cursor-pointer text-sm sm:text-xs md:text-base flex items-center gap-x-2"
+                href={frontmatter.github_url}
+              >
+                Click to go to the code <Link className="w-3 h-3" />
+              </a>
             </p>
           )
         }
@@ -32,8 +41,11 @@ const { frontmatter } = Astro.props;
             <p class="flex items-center gap-x-2">
               <Code2 className="w-4 h-4" />
               Challenge:{" "}
-              <a class="underline cursor-pointer">
-                {frontmatter.challenge_url}
+              <a
+                class="underline cursor-pointer text-sm sm:text-xs md:text-base flex items-center gap-x-2"
+                href={frontmatter.challenge_url}
+              >
+                Click to go to the challenge <Link className="w-3 h-3" />
               </a>
             </p>
           )

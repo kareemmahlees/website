@@ -5,6 +5,7 @@ import astronaut from "@/assets/astronaut.svg";
 import astronautMobile from "@/assets/astronaut_mobile.svg";
 import saturn from "@/assets/saturn_mobile.svg";
 import { Image } from "astro:assets";
+import { ArrowUpRight } from "lucide-react";
 ---
 
 <header
@@ -57,6 +58,14 @@ import { Image } from "astro:assets";
           />
         </a>
       </div>
+      <a
+        href="/blog"
+        class="flex items-center underline underline-offset-2"
+        data-astro-prefetch
+        >Check out my latest blog article <ArrowUpRight
+          className="w-4 h-4"
+        /></a
+      >
     </div>
   </div>
   <div

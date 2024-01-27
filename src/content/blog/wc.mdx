@@ -1,16 +1,446 @@
 ---
-title: Writing our version of linux man
+title: Writing our version of linux wc
 pubDate: 2024-25-01
-github_url: https://github.com/kareemmahlees
+github_url: https://github.com/kareemmahlees/coding_challenges_solutions
 challenge_url: https://github.com/kareemmahlees
 challenge_name: wc
 tags: ["Golang", "Coding Challenges"]
 ---
 
-We have all at some point used the Linux man command line tool while developing something, but have you ever thought of making it?
-Today we will be tackling how to build our own version of man offering most of the functionality:
+import BlogFooter from "../footer";
 
-- Counting lined
-- Counting Words
+We have all at some point used the Linux _wc_ command line tool while developing
+something, but have you ever thought of making it?
+
+Today we will be tackling
+how to build our own version of _wc_ offering most of the functionality:
+
+- Counting lines
+- Counting words
 - Counting characters
 - Measuring the number of bytes
+
+Using the beloved **Golang**.
+
+## Left off
+
+start by initilizing your project and create a
+`main.go` file as our entry point:
+
+```bash
+mkdir ccwc
+cd ./ccwc
+go mod init ccwc
+touch main.go
+```
+
+## Step 1: Counting Bytes
+
+starting off we will need to recived command line argument from our program, so
+we will utilize the `flag` package which is helpfull in parsing CLI argumnets:
+
+```go title="wc/main.go"
+import "flag"
+
+var showBytes bool
+
+func init() {
+	flag.BoolVar(&showBytes, "c", false, "outputs the number of bytes")
+	flag.Parse()
+}
+```
+
+Now, we are going to open the specified file path, pass the file as a `reader`
+for a function that calculates it's size and returns an `int` representing the
+number of bytes.
+
+```go title="wc/main.go"
+import "io"
+
+func main(){
+	var reader io.ReadSeeker
+
+    filePath := flag.Arg(0)
+    file, err := os.Open(filePath)
+
+    // make sure to close the file at the end
+    defer func() {
+        if err = file.Close(); err != nil {
+            throwErr("Error while closing file: ", err)
+        }
+    }()
+
+    if err != nil {
+        throwErr("Error opening the specified file: ", err)
+    }
+
+    reader = file
+}
+
+// A function that calculates the number of bytes in a reader
+func calculateSize(reader io.ReadSeeker) int64 {
+	defer reader.Seek(0, io.SeekStart)
+
+	buf := &bytes.Buffer{}
+	nRead, _ := io.Copy(buf, reader)
+
+	return nRead
+}
+```
+
+And now we will modifiy our `main` function to check if the user has requested
+to show the size of bytes using the `-c` flag or not.
+
+```go title="wc/main.go" {21-27}
+
+func main(){
+	var reader io.ReadSeeker
+
+    filePath := flag.Arg(0)
+    file, err := os.Open(filePath)
+
+    // make sure to close the file at the end
+    defer func() {
+        if err = file.Close(); err != nil {
+            throwErr("Error while closing file: ", err)
+        }
+    }()
+
+    if err != nil {
+        throwErr("Error opening the specified file: ", err)
+    }
+
+    reader = file
+
+	output := ""
+
+	if showBytes {
+		output += fmt.Sprintf("%d ", calculateSize(reader))
+	}
+
+	fmt.Println(output)
+}
+
+```
+
+Until now are not printing the file path to the user as it's done in the
+original `wc`. that is because the user might not pass a file path and instead
+pass the file contents directly through piping:
+
+```bash
+cat test.txt | ccwc
+```
+
+This is the reason also we are treating the file as a `reader` while we might have just use the `file.Stat()` struct.
+
+This is something we will tackle in the final step don't worry.
+
+## Step 2: Counting Lines
+
+Now, we will modify our `init` function to accept the `-l` option.
+
+```go title="wc/main.go" {2,6}
+var showBytes bool
+var showNumOfLines bool
+
+func init() {
+	flag.BoolVar(&showBytes, "c", false, "outputs the number of bytes")
+	flag.BoolVar(&showNumOfLines, "l", false, "outputs the number of lines")
+	flag.Parse()
+}
+```
+
+And we will add the function that calculates the number of lines from a reader
+
+```go title="wc/main.go"
+// ...
+func calculateNumOfLines(reader io.ReadSeeker) int {
+	defer reader.Seek(0, io.SeekStart)
+
+	numOfLines := 0
+	scanner := bufio.NewScanner(reader)
+
+	for scanner.Scan() {
+		numOfLines++
+	}
+	return numOfLines
+}
+```
+
+on thing left is the modify our `main` to show the number of lines on demand.
+
+```go title="wc/main.go" {28-30}
+// ...
+
+func main(){
+	var reader io.ReadSeeker
+
+    filePath := flag.Arg(0)
+    file, err := os.Open(filePath)
+
+    // make sure to close the file at the end
+    defer func() {
+        if err = file.Close(); err != nil {
+            throwErr("Error while closing file: ", err)
+        }
+    }()
+
+    if err != nil {
+        throwErr("Error opening the specified file: ", err)
+    }
+
+    reader = file
+
+	output := ""
+
+	if showBytes {
+		output += fmt.Sprintf("%d ", calculateSize(reader))
+	}
+
+	if showNumOfLines {
+		output += fmt.Sprintf("%d ", calculateNumOfLines(reader))
+	}
+
+	fmt.Println(output)
+}
+
+// ...
+
+```
+
+## Step 3: Counting Words
+
+We will wake the same path as we did before:
+
+- modify `init` to recieve the CLI argument `-w`
+- create the function the calculates the number of words
+- modify `main` to show the output on demand
+
+```go title ="wc/main.go" {3,8,41-43,50-61}
+var showBytes bool
+var showNumOfLines bool
+var showNumOfWords bool
+
+func init() {
+	flag.BoolVar(&showBytes, "c", false, "outputs the number of bytes")
+	flag.BoolVar(&showNumOfLines, "l", false, "outputs the number of lines")
+	flag.BoolVar(&showNumOfWords, "w", false, "outputs the number of words")
+	flag.Parse()
+}
+
+func main() {
+	var reader io.ReadSeeker
+
+    filePath := flag.Arg(0)
+    file, err := os.Open(filePath)
+
+    // make sure to close the file at the end
+    defer func() {
+        if err = file.Close(); err != nil {
+            throwErr("Error while closing file: ", err)
+        }
+    }()
+
+    if err != nil {
+        throwErr("Error opening the specified file: ", err)
+    }
+
+    reader = file
+
+	output := ""
+
+	if showBytes {
+		output += fmt.Sprintf("%d ", calculateSize(reader))
+	}
+
+	if showNumOfLines {
+		output += fmt.Sprintf("%d ", calculateNumOfLines(reader))
+	}
+
+	if showNumOfWords {
+		output += fmt.Sprintf("%d ", calculateNumOfWords(reader))
+	}
+
+	fmt.Println(output)
+}
+
+// ...
+
+func calculateNumOfWords(reader io.ReadSeeker) int {
+	defer reader.Seek(0, io.SeekStart)
+
+	numOfWords := 0
+	scanner := bufio.NewScanner(reader)
+	scanner.Split(bufio.ScanWords)
+
+	for scanner.Scan() {
+		numOfWords++
+	}
+	return numOfWords
+}
+```
+
+**Good job**, we are half way there!
+
+On to..
+
+## Step 4: Counting Characters
+
+You already guessed it:
+
+```go title="wc/main.go" {4,10,30-32,39-50}
+var showBytes bool
+var showNumOfLines bool
+var showNumOfWords bool
+var showNumOfChars bool
+
+func init() {
+	flag.BoolVar(&showBytes, "c", false, "outputs the number of bytes")
+	flag.BoolVar(&showNumOfLines, "l", false, "outputs the number of lines")
+	flag.BoolVar(&showNumOfWords, "w", false, "outputs the number of words")
+	flag.BoolVar(&showNumOfChars, "m", false, "outputs the number of characters")
+	flag.Parse()
+}
+
+func main() {
+
+    // ...
+
+	if showBytes {
+		output += fmt.Sprintf("%d ", calculateSize(reader))
+	}
+
+	if showNumOfLines {
+		output += fmt.Sprintf("%d ", calculateNumOfLines(reader))
+	}
+
+	if showNumOfWords {
+		output += fmt.Sprintf("%d ", calculateNumOfWords(reader))
+	}
+
+	if showNumOfChars {
+		output += fmt.Sprintf("%d ", calculateNumOfChars(reader))
+	}
+
+	fmt.Println(output)
+}
+
+// ...
+
+func calculateNumOfChars(reader io.ReadSeeker) int {
+	defer reader.Seek(0, io.SeekStart)
+
+	numOfChars := 0
+	scanner := bufio.NewScanner(reader)
+	scanner.Split(bufio.ScanRunes)
+
+	for scanner.Scan() {
+		numOfChars++
+	}
+	return numOfChars
+}
+
+```
+
+## Step 5: Empty as void
+
+In this scennario we will be handling when the user doesn't pass **any**
+arguments, we will by default show all output.
+
+This can be done easly by a simple `if statement`:
+
+```go title="wc/main.go" {21-23}
+func main() {
+
+    // ...
+
+	if showBytes {
+		output += fmt.Sprintf("%d ", calculateSize(reader))
+	}
+
+	if showNumOfLines {
+		output += fmt.Sprintf("%d ", calculateNumOfLines(reader))
+	}
+
+	if showNumOfWords {
+		output += fmt.Sprintf("%d ", calculateNumOfWords(reader))
+	}
+
+	if showNumOfChars {
+		output += fmt.Sprintf("%d ", calculateNumOfChars(reader))
+	}
+
+	if !showBytes && !showNumOfLines && !showNumOfWords && !showNumOfChars {
+		output += fmt.Sprintf("%d %d %d ", calculateSize(reader), calculateNumOfLines(reader), calculateNumOfWords(reader))
+	}
+
+	fmt.Println(output)
+}
+```
+
+## The grand finale
+
+Until now, we didn't ouput the name of the file path passed to the CLI, because
+we kept in mind this step.
+
+We will add a condition to check if the user has passed a file path or is piping
+the file contents directly to our CLI:
+
+- If the user has passed a file path we will read the file, pass it to our
+  program because it already implements the **ReadSeaker** interface, and will
+  output the path at the end.
+- If the user piped the file contents directly, we will turn the contents into a
+  reader and we will **not** output the file path " as it is done in the original
+  _wc_", because there is no way of knowing the original file path.
+
+```go title="wc/main.go" {3,5-26,36-38}
+func main() {
+    var reader io.ReadSeeker
+    var fileName string
+
+	if len(flag.Args()) == 0 {
+		b, _ := io.ReadAll(os.Stdin)
+		reader = bytes.NewReader(b)
+	} else {
+		filePath := flag.Arg(0)
+		file, err := os.Open(filePath)
+
+		// make sure to close the file at the end
+		defer func() {
+			if err = file.Close(); err != nil {
+				throwErr("Error while closing file: ", err)
+			}
+		}()
+
+		if err != nil {
+			throwErr("Error opening the specified file: ", err)
+		}
+
+		reader = file
+		fileStat, _ := file.Stat()
+		fileName = fileStat.Name()
+	}
+
+	output := ""
+
+	if showBytes {
+		output += fmt.Sprintf("%d ", calculateSize(reader))
+	}
+
+    // ...
+
+	if fileName != "" {
+		output += fmt.Sprintf("%v", fileName)
+	}
+
+	fmt.Println(output)
+}
+```
+
+## CleanUp
+
+Our code looks a little bit clunky now, so we can extract some functioanlity
+into a `utils.go` file which will contain specficially the `calculate`
+functions.
+
+<BlogFooter />
