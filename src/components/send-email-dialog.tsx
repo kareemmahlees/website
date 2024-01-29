@@ -60,6 +60,11 @@ const EmailForm = ({ setIsDialogOpen }: EmailFormProps) => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    setIsDialogOpen(false);
+
+    toast.loading("Sending", {
+      id: "email",
+    });
     const response = await fetch("/email", {
       method: "POST",
       body: JSON.stringify({ ...values }),
@@ -68,8 +73,6 @@ const EmailForm = ({ setIsDialogOpen }: EmailFormProps) => {
       },
     });
     const data: { error: boolean } = await response.json();
-
-    setIsDialogOpen(false);
 
     if (data.error) {
       return toast.error("Something went wrong", {
@@ -109,7 +112,7 @@ const EmailForm = ({ setIsDialogOpen }: EmailFormProps) => {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Send</Button>
       </form>
     </Form>
   );

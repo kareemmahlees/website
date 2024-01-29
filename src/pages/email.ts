@@ -8,7 +8,7 @@ export const POST: APIRoute = async ({ request }) => {
     await request.text(),
   );
   const { error } = await resend.emails.send({
-    from: import.meta.env.DEV ? "Acme <onboarding@resend.dev>" : body.email,
+    from: `${body.email} <onboarding@resend.dev>`,
     to: [
       import.meta.env.DEV ? "delivered@resend.dev" : "kareemmahlees@gmail.com",
     ],
