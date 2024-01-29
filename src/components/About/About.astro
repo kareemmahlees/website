@@ -1,6 +1,5 @@
 ---
 // import SendEmailDialog from "../send-email-dialog";
-import SendEmailDialog from "../send-email-dialog";
 import Sparkle from "./sparkle";
 ---
 
@@ -26,9 +25,15 @@ import Sparkle from "./sparkle";
     </div>
     <p class="font-semibold text-lg">
       I&apos;m currently looking for a new role,{" "}
-      <SendEmailDialog client:visible>
-        <span id="link"> Hire me?</span>
-      </SendEmailDialog>
+      <!-- <SendEmailDialog client:visible> -->
+      <a
+        id="link"
+        class="underline underline-offset-4"
+        href="mailto:kareemmahlees@gmail.com"
+      >
+        Hire me?</a
+      >
+      <!-- </SendEmailDialog> -->
     </p>
 
     <Sparkle
@@ -49,9 +54,9 @@ import Sparkle from "./sparkle";
 <!-- this is done because we can't pass a tag with the property "class"
   as a child to react componenet
  -->
-<style>
+<!-- <style>
   #link {
     text-decoration: underline;
     text-underline-offset: 4px;
   }
-</style>
+</style> -->

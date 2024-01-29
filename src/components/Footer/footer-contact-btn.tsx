@@ -1,11 +1,12 @@
-import SendEmailDialog from "../send-email-dialog";
-import { Button } from "../ui/button";
+import { buttonVariants } from "../ui/button";
 
 const FooterContactBtn = () => {
   return (
-    <SendEmailDialog>
-      <Button>Contact</Button>
-    </SendEmailDialog>
+    // <SendEmailDialog>
+    <a className={buttonVariants()} href="mailto:kareemmahlees@gmail.com">
+      Contact
+    </a>
+    // </SendEmailDialog>
   );
 };
 
