@@ -64,6 +64,7 @@ const EmailForm = ({ setIsDialogOpen }: EmailFormProps) => {
 
     toast.loading("Sending", {
       id: "email",
+      duration: Infinity,
     });
     const response = await fetch("/email", {
       method: "POST",
