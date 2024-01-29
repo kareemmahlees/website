@@ -7,6 +7,7 @@ export const POST: APIRoute = async ({ request }) => {
   const body: { email: string; message: string } = JSON.parse(
     await request.text(),
   );
+  console.log("is dev", import.meta.env.DEV);
   const { error } = await resend.emails.send({
     from: `${body.email} <onboarding@resend.dev>`,
     to: [
@@ -16,6 +17,7 @@ export const POST: APIRoute = async ({ request }) => {
     text: body.message,
   });
   if (error) {
+    console.log("is error", error);
     return new Response(
       JSON.stringify({
         error: true,
