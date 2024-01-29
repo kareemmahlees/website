@@ -3,9 +3,6 @@ import { Resend } from "resend";
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
-export const runtime = "edge";
-export const dynamic = "force-dynamic";
-
 export const POST: APIRoute = async ({ request }) => {
   const body: { email: string; message: string } = JSON.parse(
     await request.text(),
