@@ -1,5 +1,6 @@
 ---
 import {
+  SiCodecov,
   SiDocker,
   SiGithub,
   SiGo,
@@ -8,6 +9,7 @@ import {
   SiNextdotjs,
   SiNodedotjs,
   SiPoetry,
+  SiPostgresql,
   SiPytest,
   SiPython,
   SiReactquery,
@@ -15,9 +17,11 @@ import {
   SiRedis,
   SiRust,
   SiShadcnui,
+  SiSqlite,
   SiTauri,
   SiTypescript,
 } from "@icons-pack/react-simple-icons";
+import { Globe } from "lucide-react";
 import ProjectCard from "./ProjectCard.astro";
 ---
 
@@ -40,20 +44,21 @@ import ProjectCard from "./ProjectCard.astro";
       ]}
       socialIcons={[
         { link: "https://github.com/kareemmahlees/tablex", Icon: SiGithub },
+        { link: "https://tablex-tan.vercel.app/", Icon: Globe },
       ]}
       projectName="TableX"
     >
       A desktop table viewer for modern developers, designed for simplicity and
       ease of use together with a modern UI thanks to NextJs 14 and shadcn/ui,
-      ultra-small bundle size (~10 Mb) thanks to Tauri, and an outstanding
+      ultra-small bundle size (~20 Mb) thanks to Tauri, and an outstanding
       performance powered by a Rust backend.
     </ProjectCard>
     <ProjectCard
       reversed={true}
-      projectName="MySQL Meta"
-      techIcons={[SiGo, SiGraphql, SiMysql, SiDocker]}
+      projectName="MetaX"
+      techIcons={[SiGo, SiGraphql, SiMysql, SiPostgresql, SiSqlite, SiCodecov]}
       socialIcons={[
-        { link: "https://github.com/kareemmahlees/mysql-meta", Icon: SiGithub },
+        { link: "https://github.com/kareemmahlees/meta-x", Icon: SiGithub },
       ]}
     >
       A RESTfull and GraphQL API to manage MySQL DBs. Most of the DB
