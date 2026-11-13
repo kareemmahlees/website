@@ -1,26 +1,101 @@
 ---
-import About from "@/components/About/About.astro";
-import Footer from "@/components/Footer/Footer.astro";
-import Hero from "@/components/Hero/Hero.astro";
-import Nav from "@/components/Nav/Nav.astro";
-import Projects from "@/components/Projects/Projects.astro";
-import Tech from "@/components/Tech/Tech.astro";
 import Layout from "@/layouts/Layout.astro";
-import MaxWidthWrapper from "@/layouts/MaxWidthWrapper.astro";
 import "@/styles/globals.css";
+import {Image} from "astro:assets"
+import Download from "../assets/download.svg"
+import ArrowUpRight from "../assets/arrow-up-right.svg"
+
+const experience = [
+  { slug: 'independent', years: '2022 — Now', role: 'Independent software engineer', company: 'Alex Morgan Studio', location: 'Brooklyn, NY', note: 'Building and shipping web products with teams from first prototype through production.', description: 'I work with teams to shape, build, and ship web products. My work spans early technical decisions, full-stack implementation, and the practical details of getting software into production.', focus: ['Product engineering', 'Full-stack implementation', 'Production delivery'] },
+  { slug: 'northstar', years: '2020 — 2022', role: 'Senior software engineer', company: 'Northstar', location: 'New York, NY', note: 'Developed product features and platform foundations for early-stage software teams.', description: 'I developed product features and platform foundations for an early-stage software team, balancing immediate product needs with a codebase that could keep growing.', focus: ['Product feature development', 'Platform foundations', 'Engineering collaboration'] },
+  { slug: 'practice-studio', years: '2017 — 2020', role: 'Software engineer', company: 'Practice Studio', location: 'Portland, OR', note: 'Built reliable web applications and internal tools across a range of client projects.', description: 'I built web applications and internal tools for client projects, working across implementation, integration, and the ongoing improvements that keep software useful.', focus: ['Web application development', 'Internal tools', 'Client project delivery'] },
+]
+
+const projects = [
+  { slug: 'fieldnotes', name: 'Fieldnotes', summary: 'A fast, searchable notes app built for ideas still in progress.', year: '2025', category: 'Independent build', description: 'Fieldnotes is a small notes product designed around quick capture and reliable retrieval. The engineering work focuses on keeping the core loop fast: a lightweight editor, structured collections, and search that stays useful as a library grows.', role: 'Product engineering, application architecture, and implementation', outcome: 'A responsive full-stack application with a focused writing flow, searchable notes, and a reusable component system.', services: ['TypeScript', 'Next.js', 'PostgreSQL'] },
+  { slug: 'common-ground', name: 'Common Ground', summary: 'A local directory for finding repair, reuse, and community resources.', year: '2024', category: 'Common Ground Studio', description: 'Common Ground brings useful neighborhood resources into one searchable directory. The application organizes place data into a clear discovery flow and gives each listing a consistent, maintainable structure.', role: 'Application development and data modeling', outcome: 'A responsive directory with structured listings, location-aware discovery, and an accessible interface for browsing resources.', services: ['React', 'API design', 'Geospatial data'] },
+  { slug: 'still-life', name: 'Still Life', summary: 'A considered storefront for a small collection of everyday objects.', year: '2024', category: 'Still Life Objects', description: 'Still Life is a small commerce experience built to make a focused catalog easy to explore and maintain. The implementation connects product content and checkout flows while keeping page performance and editorial flexibility in mind.', role: 'Front-end engineering and commerce integration', outcome: 'A streamlined storefront with reusable product templates, clear product data, and a maintainable content workflow.', services: ['Shopify', 'TypeScript', 'Performance'] },
+  { slug: 'open-house', name: 'Open House', summary: 'A property search experience that makes listings easier to compare.', year: '2023', category: 'Open House', description: 'Open House explores how a property search tool can make its data easier to understand. The work centers on flexible search criteria, consistent listing information, and comparison tools that help people narrow options.', role: 'Full-stack engineering and technical prototyping', outcome: 'A working search prototype with filterable listings, saved comparisons, and a responsive results view.', services: ['React', 'Search', 'Prototyping'] },
+]
+
 ---
 
 <Layout title="Kareem Ebrahim">
-  <Nav />
-  <main class="h-full w-full flex flex-col items-center">
-    <Hero />
-    <MaxWidthWrapper
-      class="space-y-[150px] md:space-y-[230px] lg:space-y-[300px] mt-[200px] md:mt-[300px] lg:mt-[500px]"
-    >
-      <About />
-      <Tech />
-      <Projects />
-    </MaxWidthWrapper>
-    <Footer />
-  </main>
+    <main class="site-shell mx-auto px-5 sm:px-8">
+          <header class="topbar">
+              <a href="#top" class="brand" aria-label="Alex Morgan home">
+              <span>Kareem Ebrahim</span>
+              <span class="muted">Software engineer</span>
+              </a>
+            <a class="cv-link" href="https://docs.google.com/document/u/0/export?format=docx&id=1js7jkFavUT6LgHqmUikKH0Fucz5Akjcbi0yNuR3XAno" download>
+                Download CV <Image src={Download} width={14} aria-hidden="true" alt=""/>
+            </a>
+          </header>
+
+          <section id="top" class="intro">
+            <p class="eyebrow">Software Engineer</p>
+            <h1>I make thoughtful things for the web.</h1>
+            <p class="intro-copy">I’m Alex. I build software across the stack, from the first shape of an idea to the details that make it reliable in production.</p>
+          </section>
+
+          <section id="experience" class="experience-section">
+            <div class="section-heading">
+              <h2>Work experience</h2>
+              <p>Teams, roles, and work over time.</p>
+            </div>
+            <div class="experience-list">
+              {experience.map((item) => (
+                <a class="experience-row" href={`/experience/${item.slug}`} id={item.slug}>
+                  <span class="experience-years">{item.years}</span>
+                  <div class="experience-main">
+                    <h3>{item.role}</h3>
+                    <p class="experience-company">{item.company}<span>{item.location}</span></p>
+                    <p class="experience-note">{item.note}</p>
+                  </div>
+                  <Image src={ArrowUpRight} class="row-arrow" width={17} aria-hidden="true" alt=""/>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <section id="projects" class="projects-section">
+            <div class="section-heading">
+              <h2>Selected projects</h2>
+              <p>A few things I’ve worked on.</p>
+            </div>
+            <div class="project-list">
+              {projects.map((project) => (
+                <a class="project-row" href={`/projects/${project.slug}`} id={project.slug}>
+                  <div class="project-main">
+                    <h3>{project.name}</h3>
+                    <p>{project.summary}</p>
+                  </div>
+                  <span class="project-year">{project.year}</span>
+                  <Image src={ArrowUpRight} class="row-arrow" width={17} aria-hidden="true" alt=""/>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <section id="contact" class="contact-section">
+            <div class="section-heading">
+              <h2>Elsewhere</h2>
+              <p>Get in touch or find me online.</p>
+            </div>
+            <div class="contact-links">
+              <a href="mailto:hello@alexmorgan.design">Email <span>hello@alexmorgan.design</span>
+                  <Image src={ArrowUpRight} class="row-arrow" width={17} aria-hidden="true" alt=""/>
+              </a>
+              <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub <span>Code and open source</span>
+                  <Image src={ArrowUpRight} class="row-arrow" width={17} aria-hidden="true" alt=""/>
+              </a>
+              <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn <span>Professional profile</span>
+                  <Image src={ArrowUpRight} class="row-arrow" width={17} aria-hidden="true" alt=""/>
+              </a>
+            </div>
+          </section>
+
+          <footer class="footer"><span>© 2025 Alex Morgan</span><a href="#top">Back to top ↑</a></footer>
+        </main>
+      )
 </Layout>
