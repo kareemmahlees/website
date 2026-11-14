@@ -1,101 +1,106 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import "@/styles/globals.css";
 import {Image} from "astro:assets"
 import Download from "../assets/download.svg"
 import ArrowUpRight from "../assets/arrow-up-right.svg"
+import { getCollection } from "astro:content";
 
-const experience = [
-  { slug: 'independent', years: '2022 — Now', role: 'Independent software engineer', company: 'Alex Morgan Studio', location: 'Brooklyn, NY', note: 'Building and shipping web products with teams from first prototype through production.', description: 'I work with teams to shape, build, and ship web products. My work spans early technical decisions, full-stack implementation, and the practical details of getting software into production.', focus: ['Product engineering', 'Full-stack implementation', 'Production delivery'] },
-  { slug: 'northstar', years: '2020 — 2022', role: 'Senior software engineer', company: 'Northstar', location: 'New York, NY', note: 'Developed product features and platform foundations for early-stage software teams.', description: 'I developed product features and platform foundations for an early-stage software team, balancing immediate product needs with a codebase that could keep growing.', focus: ['Product feature development', 'Platform foundations', 'Engineering collaboration'] },
-  { slug: 'practice-studio', years: '2017 — 2020', role: 'Software engineer', company: 'Practice Studio', location: 'Portland, OR', note: 'Built reliable web applications and internal tools across a range of client projects.', description: 'I built web applications and internal tools for client projects, working across implementation, integration, and the ongoing improvements that keep software useful.', focus: ['Web application development', 'Internal tools', 'Client project delivery'] },
-]
+const experience = (await getCollection('experience')).sort((a, b) => a.data.order - b.data.order)
+const projects = (await getCollection('projects')).sort((a, b) => b.data.year.localeCompare(a.data.year))
 
-const projects = [
-  { slug: 'fieldnotes', name: 'Fieldnotes', summary: 'A fast, searchable notes app built for ideas still in progress.', year: '2025', category: 'Independent build', description: 'Fieldnotes is a small notes product designed around quick capture and reliable retrieval. The engineering work focuses on keeping the core loop fast: a lightweight editor, structured collections, and search that stays useful as a library grows.', role: 'Product engineering, application architecture, and implementation', outcome: 'A responsive full-stack application with a focused writing flow, searchable notes, and a reusable component system.', services: ['TypeScript', 'Next.js', 'PostgreSQL'] },
-  { slug: 'common-ground', name: 'Common Ground', summary: 'A local directory for finding repair, reuse, and community resources.', year: '2024', category: 'Common Ground Studio', description: 'Common Ground brings useful neighborhood resources into one searchable directory. The application organizes place data into a clear discovery flow and gives each listing a consistent, maintainable structure.', role: 'Application development and data modeling', outcome: 'A responsive directory with structured listings, location-aware discovery, and an accessible interface for browsing resources.', services: ['React', 'API design', 'Geospatial data'] },
-  { slug: 'still-life', name: 'Still Life', summary: 'A considered storefront for a small collection of everyday objects.', year: '2024', category: 'Still Life Objects', description: 'Still Life is a small commerce experience built to make a focused catalog easy to explore and maintain. The implementation connects product content and checkout flows while keeping page performance and editorial flexibility in mind.', role: 'Front-end engineering and commerce integration', outcome: 'A streamlined storefront with reusable product templates, clear product data, and a maintainable content workflow.', services: ['Shopify', 'TypeScript', 'Performance'] },
-  { slug: 'open-house', name: 'Open House', summary: 'A property search experience that makes listings easier to compare.', year: '2023', category: 'Open House', description: 'Open House explores how a property search tool can make its data easier to understand. The work centers on flexible search criteria, consistent listing information, and comparison tools that help people narrow options.', role: 'Full-stack engineering and technical prototyping', outcome: 'A working search prototype with filterable listings, saved comparisons, and a responsive results view.', services: ['React', 'Search', 'Prototyping'] },
+// const experience = [
+//   { slug: 'thyab', years: '2024 — Now', role: 'Lead Software Engineer', company: 'Thyab', location: 'Riyadh, Saudi Arabia', note: 'Building and shipping web products with teams from first prototype through production.', description: 'I work with teams to shape, build, and ship web products. My work spans early technical decisions, full-stack implementation, and the practical details of getting software into production.', focus: ['Product engineering', 'Full-stack implementation', 'Production delivery'] },
+//   { slug: 'evento', years: '2023 — 2023', role: 'Backend Engineer', company: 'Evento', location: 'Riyadh, Saudi Arabia', note: 'Developed product features and platform foundations for early-stage software teams.', description: 'I developed product features and platform foundations for an early-stage software team, balancing immediate product needs with a codebase that could keep growing.', focus: ['Product feature development', 'Platform foundations', 'Engineering collaboration'] },
+// ]
+//
+// const projects = [
+//   { slug: 'tableX', name: 'TableX', summary: 'Cross-Platform database browser written in Rust', year: '2024'},
+//   { slug: 'metax', name: 'MetaX', summary: 'REStfull and GraphQL API generation for databases written in Go', year: '2024', },
+// ]
+
+const connections = [
+  {name:'Email',display:"kareemmahlees@gmail.com",link:"mailto:kareemmahlees@gmail.com"},
+  {name:'LinkedIn',display:"linkedin.com/in/kareem-mahlees",link:"https://www.linkedin.com/in/kareem-mahlees"},
+  {name:'GitHub',display:"github.com/kareemmahlees",link:"https://www.github.com/kareemmahlees"},
+  {name:'Cal.com',display:"cal.com/kareem-ebrahim",link:'https://www.cal.com/kareem-ebrahim'}
 ]
 
 ---
 
-<Layout title="Kareem Ebrahim">
-    <main class="site-shell mx-auto px-5 sm:px-8">
-          <header class="topbar">
-              <a href="#top" class="brand" aria-label="Alex Morgan home">
-              <span>Kareem Ebrahim</span>
-              <span class="muted">Software engineer</span>
-              </a>
-            <a class="cv-link" href="https://docs.google.com/document/u/0/export?format=docx&id=1js7jkFavUT6LgHqmUikKH0Fucz5Akjcbi0yNuR3XAno" download>
-                Download CV <Image src={Download} width={14} aria-hidden="true" alt=""/>
-            </a>
-          </header>
+<BaseLayout title="Kareem Ebrahim" description="something">
+    <main class="mx-auto w-full max-w-[760px] px-5 sm:px-8">
+         <header class="flex min-h-[76px] items-center justify-between gap-6 border-b border-border">
+             <a href="#top" class="flex flex-col text-sm font-medium leading-[1.45]" aria-label="Kareem Ebrahim's home">
+             <span>Kareem Ebrahim</span>
+             <span class="text-[11px] font-normal text-muted-foreground">Software engineer</span>
+             </a>
+           <a class="inline-flex min-h-[38px] items-center justify-center gap-2 rounded-md bg-accent px-3.5 text-[11px] font-semibold text-accent-foreground transition hover:-translate-y-px hover:bg-[#b7c09e] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring" href="https://docs.google.com/document/u/0/export?format=pdf&id=1js7jkFavUT6LgHqmUikKH0Fucz5Akjcbi0yNuR3XAno" download>
+               Download CV <Image src={Download} width={14} aria-hidden="true" alt="Download CV"/>
+           </a>
+         </header>
 
-          <section id="top" class="intro">
-            <p class="eyebrow">Software Engineer</p>
-            <h1>I make thoughtful things for the web.</h1>
-            <p class="intro-copy">I’m Alex. I build software across the stack, from the first shape of an idea to the details that make it reliable in production.</p>
-          </section>
+         <section id="top" class="py-10 sm:py-[52px]">
+           <p class="mb-[18px] text-xs text-muted-foreground">T-Shaped Software Engineer</p>
+           <h1 class="mb-3.5 max-w-[640px] text-[clamp(26px,4vw,36px)] font-medium leading-[1.4] tracking-[-0.055em]">I make thoughtful things for the web.</h1>
+           <p class="max-w-[640px] text-sm leading-[1.8] text-[#c1c0bb]">I’m Kareem. I build software across the stack, from the first shape of an idea to the details that make it reliable in production.</p>
+         </section>
 
-          <section id="experience" class="experience-section">
-            <div class="section-heading">
-              <h2>Work experience</h2>
-              <p>Teams, roles, and work over time.</p>
-            </div>
-            <div class="experience-list">
-              {experience.map((item) => (
-                <a class="experience-row" href={`/experience/${item.slug}`} id={item.slug}>
-                  <span class="experience-years">{item.years}</span>
-                  <div class="experience-main">
-                    <h3>{item.role}</h3>
-                    <p class="experience-company">{item.company}<span>{item.location}</span></p>
-                    <p class="experience-note">{item.note}</p>
-                  </div>
-                  <Image src={ArrowUpRight} class="row-arrow" width={17} aria-hidden="true" alt=""/>
-                </a>
-              ))}
-            </div>
-          </section>
+         <section id="experience" class="mb-[50px] rounded-lg bg-card px-4 pb-4 pt-5 sm:mb-16 sm:px-6 sm:pb-5 sm:pt-[22px]">
+           <div class="mb-3 flex flex-col gap-[3px] sm:mb-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-[18px]">
+             <h2 class="text-[15px] font-medium leading-[1.5]">Work experience</h2>
+             <p class="text-[11px] text-muted-foreground">Teams, roles, and work over time.</p>
+           </div>
+           <div class="flex flex-col gap-[3px]">
+             {experience.map((item) => (
+               <a class="group -mx-2 grid grid-cols-[minmax(0,1fr)_18px] gap-x-2 gap-y-2 rounded-md px-2 py-3.5 transition-colors hover:bg-secondary sm:grid-cols-[130px_minmax(0,1fr)_18px] sm:items-start sm:gap-x-3.5 sm:py-[15px]" href={`/experience/${item.id}`} key={item.id}>
+                 <span class="row-start-1 text-[11px] text-muted-foreground sm:col-start-1 sm:row-auto sm:pt-[3px]">{item.data.years}</span>
+                 <div class="col-start-1 row-start-2 sm:col-start-2 sm:row-auto">
+                   <h3 class="text-sm font-medium leading-[1.55]">{item.data.role}</h3>
+                   <p class="mb-2 mt-0.5 flex flex-wrap gap-x-3 text-[11px] text-accent">{item.data.company}<span class="text-muted-foreground">{item.data.location}</span></p>
+                   <p class="max-w-[470px] text-xs leading-[1.65] text-muted-foreground">{item.data.note}</p>
+                 </div>
+                 <Image src={ArrowUpRight} class="col-start-2 row-start-1 mt-[3px] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent sm:col-start-3 sm:row-auto" width={15} aria-hidden="true" alt="See experience"/>
+               </a>
+             ))}
+           </div>
+         </section>
 
-          <section id="projects" class="projects-section">
-            <div class="section-heading">
-              <h2>Selected projects</h2>
-              <p>A few things I’ve worked on.</p>
-            </div>
-            <div class="project-list">
-              {projects.map((project) => (
-                <a class="project-row" href={`/projects/${project.slug}`} id={project.slug}>
-                  <div class="project-main">
-                    <h3>{project.name}</h3>
-                    <p>{project.summary}</p>
-                  </div>
-                  <span class="project-year">{project.year}</span>
-                  <Image src={ArrowUpRight} class="row-arrow" width={17} aria-hidden="true" alt=""/>
-                </a>
-              ))}
-            </div>
-          </section>
+         <section id="projects" class="mb-[54px] sm:mb-[68px]">
+           <div class="mb-3 flex flex-col gap-[3px] sm:mb-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-[18px]">
+             <h2 class="text-[15px] font-medium leading-[1.5]">Selected projects</h2>
+             <p class="text-[11px] text-muted-foreground">A few things I’ve worked on.</p>
+           </div>
+           <div class="flex flex-col">
+             {projects.map((project) => (
+               <a class="group -mx-2 grid grid-cols-[minmax(0,1fr)_18px] gap-x-3 gap-y-1 rounded-sm border-t border-border px-2 py-3 first:border-t-0 sm:grid-cols-[minmax(0,1fr)_48px_18px] sm:py-3.5" href={`/projects/${project.id}`} key={project.id}>
+                 <div class="col-start-1 row-start-1">
+                   <h3 class="text-[13px] font-medium">{project.data.title}</h3>
+                   <p class="mt-1 text-[11px] leading-[1.6] text-muted-foreground">{project.data.summary}</p>
+                 </div>
+                 <span class="col-start-1 row-start-2 text-left text-[10px] leading-[1.6] text-muted-foreground sm:col-start-2 sm:row-start-1 sm:text-right">{project.year}</span>
+                 <Image src={ArrowUpRight} class="col-start-2 row-start-1 mt-0.5 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent sm:col-start-3" width={15} aria-hidden="true" alt="Open link"/>
+               </a>
+             ))}
+           </div>
+         </section>
 
-          <section id="contact" class="contact-section">
-            <div class="section-heading">
-              <h2>Elsewhere</h2>
-              <p>Get in touch or find me online.</p>
-            </div>
-            <div class="contact-links">
-              <a href="mailto:hello@alexmorgan.design">Email <span>hello@alexmorgan.design</span>
-                  <Image src={ArrowUpRight} class="row-arrow" width={17} aria-hidden="true" alt=""/>
-              </a>
-              <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub <span>Code and open source</span>
-                  <Image src={ArrowUpRight} class="row-arrow" width={17} aria-hidden="true" alt=""/>
-              </a>
-              <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn <span>Professional profile</span>
-                  <Image src={ArrowUpRight} class="row-arrow" width={17} aria-hidden="true" alt=""/>
-              </a>
-            </div>
-          </section>
+         <section id="contact" class="mb-[42px] sm:mb-[52px]">
+           <div class="mb-3 flex flex-col gap-[3px] sm:mb-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-[18px]">
+             <h2 class="text-[15px] font-medium leading-[1.5]">Elsewhere</h2>
+             <p class="text-[11px] text-muted-foreground">Get in touch or find me online.</p>
+           </div>
+           <div class="flex flex-col gap-1">
+               {connections.map(conn=>(
+               <a class="grid grid-cols-[70px_minmax(0,1fr)_18px] items-center gap-2 py-2 text-xs hover:text-foreground sm:grid-cols-[100px_minmax(0,1fr)_18px] sm:gap-3" href={conn.link} target="_blank" rel="noopener noreferrer" aria-label="Open link" aria-hidden="true" alt="Open link">
+                       {conn.name}
+                   <span class="text-[11px] text-muted-foreground">{conn.display}</span>
+                   <Image src={ArrowUpRight} width={15} aria-hidden="true" alt="Open link"/>
+               </a>
+               ))}
+           </div>
+         </section>
 
-          <footer class="footer"><span>© 2025 Alex Morgan</span><a href="#top">Back to top ↑</a></footer>
-        </main>
-      )
-</Layout>
+         <footer class="flex justify-between gap-5 py-5 pb-[30px] text-[10px] text-muted-foreground"><span>© 2025 Alex Morgan</span><a class="hover:text-foreground" href="#top">Back to top ↑</a></footer>
+       </main>
+</BaseLayout>
