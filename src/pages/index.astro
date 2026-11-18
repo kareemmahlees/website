@@ -43,7 +43,7 @@ const connections = [
            </div>
            <div class="flex flex-col gap-[3px]">
              {experience.map((item) => (
-               <a class="group -mx-2 grid grid-cols-[minmax(0,1fr)_18px] gap-x-2 gap-y-2 rounded-md px-2 py-3.5 transition-colors hover:bg-secondary sm:grid-cols-[130px_minmax(0,1fr)_18px] sm:items-start sm:gap-x-3.5 sm:py-[15px]" href={`/experience/${item.id}`} key={item.id}>
+               <a class="group -mx-2 grid grid-cols-[minmax(0,1fr)_18px] gap-x-2 gap-y-2 rounded-md px-2 py-3.5 transition-colors hover:bg-secondary sm:grid-cols-[130px_minmax(0,1fr)_18px] sm:items-start sm:gap-x-3.5 sm:py-[15px]" href={`/experience/${item.id}`}>
                  <span class="row-start-1 text-[11px] text-muted-foreground sm:col-start-1 sm:row-auto sm:pt-[3px]">{item.data.years}</span>
                  <div class="col-start-1 row-start-2 sm:col-start-2 sm:row-auto">
                    <h3 class="text-sm font-medium leading-[1.55]">{item.data.role}</h3>
@@ -63,12 +63,11 @@ const connections = [
            </div>
            <div class="flex flex-col">
              {projects.map((project) => (
-               <a class="group -mx-2 grid grid-cols-[minmax(0,1fr)_18px] gap-x-3 gap-y-1 rounded-sm border-t border-border px-2 py-3 first:border-t-0 sm:grid-cols-[minmax(0,1fr)_48px_18px] sm:py-3.5" href={`/projects/${project.id}`} key={project.id}>
+               <a class="group -mx-2 grid grid-cols-[minmax(0,1fr)_18px] gap-x-3 gap-y-1 rounded-sm border-t border-border px-2 py-3 first:border-t-0 sm:grid-cols-[minmax(0,1fr)_48px_18px] sm:py-3.5" href={`/projects/${project.id}`} >
                  <div class="col-start-1 row-start-1">
                    <h3 class="text-[13px] font-medium">{project.data.title}</h3>
                    <p class="mt-1 text-[11px] leading-[1.6] text-muted-foreground">{project.data.summary}</p>
                  </div>
-                 <span class="col-start-1 row-start-2 text-left text-[10px] leading-[1.6] text-muted-foreground sm:col-start-2 sm:row-start-1 sm:text-right">{project.year}</span>
                  <Image src={ArrowUpRight} class="col-start-2 row-start-1 mt-0.5 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent sm:col-start-3" width={15} aria-hidden="true" alt="Open link"/>
                </a>
              ))}
@@ -82,7 +81,7 @@ const connections = [
            </div>
            <div class="flex flex-col gap-1">
                {connections.map(conn=>(
-               <a class="grid grid-cols-[70px_minmax(0,1fr)_18px] items-center gap-2 py-2 text-xs hover:text-foreground sm:grid-cols-[100px_minmax(0,1fr)_18px] sm:gap-3" href={conn.link} target="_blank" rel="noopener noreferrer" aria-label="Open link" aria-hidden="true" alt="Open link">
+               <a class="grid grid-cols-[70px_minmax(0,1fr)_18px] items-center gap-2 py-2 text-xs hover:text-foreground sm:grid-cols-[100px_minmax(0,1fr)_18px] sm:gap-3" href={conn.link} target="_blank" rel="noopener noreferrer" aria-label="Open link" aria-hidden="true">
                        {conn.name}
                    <span class="text-[11px] text-muted-foreground">{conn.display}</span>
                    <Image src={ArrowUpRight} width={15} aria-hidden="true" alt="Open link"/>
