@@ -7,7 +7,7 @@ import ArrowUpRight from "../assets/arrow-up-right.svg"
 import { getCollection } from "astro:content";
 
 const experience = (await getCollection('experience')).sort((a, b) => a.data.order - b.data.order)
-const projects = (await getCollection('projects')).sort((a, b) => b.data.year.localeCompare(a.data.year))
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order)
 
 const connections = [
   {name:'Email',display:"kareemmahlees@gmail.com",link:"mailto:kareemmahlees@gmail.com"},
@@ -91,6 +91,6 @@ const connections = [
            </div>
          </section>
 
-         <footer class="flex justify-between gap-5 py-5 pb-[30px] text-[10px] text-muted-foreground"><span>© 2025 Alex Morgan</span><a class="hover:text-foreground" href="#top">Back to top ↑</a></footer>
+         <footer class="flex justify-between gap-5 py-5 pb-[30px] text-[10px] text-muted-foreground"><span>© 2026 Kareem Ebrahim</span><a class="hover:text-foreground" href="#top">Back to top ↑</a></footer>
        </main>
 </BaseLayout>
