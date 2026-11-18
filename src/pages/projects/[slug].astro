@@ -1,0 +1,36 @@
+---
+import { getCollection, render } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import SiteFooter from '../../components/SiteFooter.astro'
+import SiteHeader from '../../components/SiteHeader.astro'
+
+export async function getStaticPaths() {
+  const entries = await getCollection('projects')
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }))
+}
+
+const { entry } = Astro.props
+const { Content } = await render(entry)
+---
+
+<BaseLayout title={`${entry.data.title} — Kareem Ebrahim`} description={entry.data.summary}>
+  <main class="mx-auto w-full max-w-[760px] px-5 sm:px-8">
+    <SiteHeader />
+    <article class="pb-20 pt-9 sm:pt-12">
+      <a class="inline-flex items-center gap-2 text-[11px] text-muted-foreground hover:text-foreground" href="/#projects"><span aria-hidden="true">←</span> Back to projects</a>
+      <h1 class="mb-2 mt-8 text-[clamp(22px,4vw,30px)] font-medium leading-[1.5] tracking-[-0.04em]">{entry.data.title}</h1>
+      <div class="w-full flex items-center justify-between text-xs">
+      <p ><span class="text-muted-foreground">Built with</span><span class="mx-2 text-muted-foreground">/</span>{entry.data.technologies.join(' · ')}</p>
+      <a class="inline-flex items-center gap-1.5 transition hover:text-accent" href={entry.data.github} target="_blank" rel="noreferrer" aria-label={`Open ${entry.data.title} source repository on GitHub`}>Source code <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="max-w-[680px] text-[14px] leading-[1.8] text-foreground mt-2">{entry.data.summary}</p>
+      <div class="mt-10 max-w-[680px] text-[13px] leading-[1.9] text-[#c1c0bb] [&_h2]:mb-3 [&_h2]:mt-10 [&_h2]:text-[14px] [&_h2]:font-medium [&_h2]:text-foreground [&_h2:first-child]:mt-0 [&_p]:mb-5 [&_p]:mt-0 [&_ul]:mb-6 [&_ul]:mt-0 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5 [&_li]:pl-1">
+        <Content />
+      </div>
+      <div class="mt-12 flex flex-col gap-4 border-t border-border pt-5 text-xs sm:flex-row sm:justify-between">
+          <a class="inline-flex items-center gap-2 text-xs text-accent hover:text-foreground" href="/#experience">View work experience <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+    <SiteFooter />
+  </main>
+</BaseLayout>
