@@ -9,16 +9,6 @@ import { getCollection } from "astro:content";
 const experience = (await getCollection('experience')).sort((a, b) => a.data.order - b.data.order)
 const projects = (await getCollection('projects')).sort((a, b) => b.data.year.localeCompare(a.data.year))
 
-// const experience = [
-//   { slug: 'thyab', years: '2024 — Now', role: 'Lead Software Engineer', company: 'Thyab', location: 'Riyadh, Saudi Arabia', note: 'Building and shipping web products with teams from first prototype through production.', description: 'I work with teams to shape, build, and ship web products. My work spans early technical decisions, full-stack implementation, and the practical details of getting software into production.', focus: ['Product engineering', 'Full-stack implementation', 'Production delivery'] },
-//   { slug: 'evento', years: '2023 — 2023', role: 'Backend Engineer', company: 'Evento', location: 'Riyadh, Saudi Arabia', note: 'Developed product features and platform foundations for early-stage software teams.', description: 'I developed product features and platform foundations for an early-stage software team, balancing immediate product needs with a codebase that could keep growing.', focus: ['Product feature development', 'Platform foundations', 'Engineering collaboration'] },
-// ]
-//
-// const projects = [
-//   { slug: 'tableX', name: 'TableX', summary: 'Cross-Platform database browser written in Rust', year: '2024'},
-//   { slug: 'metax', name: 'MetaX', summary: 'REStfull and GraphQL API generation for databases written in Go', year: '2024', },
-// ]
-
 const connections = [
   {name:'Email',display:"kareemmahlees@gmail.com",link:"mailto:kareemmahlees@gmail.com"},
   {name:'LinkedIn',display:"linkedin.com/in/kareem-mahlees",link:"https://www.linkedin.com/in/kareem-mahlees"},
@@ -58,7 +48,7 @@ const connections = [
                  <div class="col-start-1 row-start-2 sm:col-start-2 sm:row-auto">
                    <h3 class="text-sm font-medium leading-[1.55]">{item.data.role}</h3>
                    <p class="mb-2 mt-0.5 flex flex-wrap gap-x-3 text-[11px] text-accent">{item.data.company}<span class="text-muted-foreground">{item.data.location}</span></p>
-                   <p class="max-w-[470px] text-xs leading-[1.65] text-muted-foreground">{item.data.note}</p>
+                   <p class="max-w-[470px] text-xs leading-[1.65] text-muted-foreground">{item.data.shortDescription}</p>
                  </div>
                  <Image src={ArrowUpRight} class="col-start-2 row-start-1 mt-[3px] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent sm:col-start-3 sm:row-auto" width={15} aria-hidden="true" alt="See experience"/>
                </a>
